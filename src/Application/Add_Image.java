@@ -21,13 +21,11 @@ public class Add_Image {
 	private MarvinImage backupImage;
 	private JButton Add_Image;
 	private JFrame frame;
-	protected static File file;
 	
 	public Add_Image(JFrame frame, JButton Add_Image) {
 		this.frame = frame;
 		this.Add_Image = Add_Image;
 	}
-	
 	
 	public void Load() {
 		Add_Image.addActionListener(new ActionListener() {
@@ -36,7 +34,7 @@ public class Add_Image {
 				int response = fileChooser.showOpenDialog(null);
 				
 				if (response == JFileChooser.APPROVE_OPTION) {
-					file = new File(fileChooser.getSelectedFile().getAbsolutePath());
+					File file = new File(fileChooser.getSelectedFile().getAbsolutePath());
 					System.out.println(file.toString());
 					imagePanel = new MarvinImagePanel();
 					imagePanel.setBounds(10, 10, 800, 543);
@@ -48,11 +46,6 @@ public class Add_Image {
 				}
 			}
 		});
-	}
-
-	public static void addActionListener(ActionListener actionListener) {
-		// TODO Auto-generated method stub
-		
 	}
 
 }
