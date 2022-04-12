@@ -16,7 +16,9 @@ public class GUI {
 	public GUI() {
 		initialize();
 		Add_Image imagine = new Add_Image(frame, Add_Image);
+		Export imagine2= new Export(Export);
 		imagine.Load();
+		imagine2.Load();
 	}
 	
 	/**
@@ -40,6 +42,7 @@ public class GUI {
 		Export = new JButton("Export");
 		Export.setBounds(839, 288, 187, 41);
 		frame.getContentPane().add(Export);
+		
 	}
 
 		public JFrame getFrame() {
