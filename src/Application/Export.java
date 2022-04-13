@@ -12,28 +12,34 @@ import static marvin.MarvinPluginCollection.*;
 import marvin.image.MarvinImage;
 import marvin.io.MarvinImageIO;
 
-public class Export extends Add_Image{
+public class Export{
 	
-	private static JFrame frame;
 	private JButton Export;
+	private static Add_Image Add_image;
 	
-	public Export(JButton Export){
-		super(frame, Export);
+	public Export(JFrame frame,JButton Export, Add_Image Add_image){
+		this.Add_image = Add_image;
 		this.Export=Export;
 	}
 
-	public void Load() {
+	public static Add_Image getAddImage(){
+		return Add_image;
+	}
+	
+	
+	public void Load() {		
 		Export.addActionListener(new ActionListener() {
+
 			public void actionPerformed(ActionEvent e) {
-				
-					JFileChooser fileChooser2 = new JFileChooser();
-					fileChooser2.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-					int response = fileChooser2.showOpenDialog(null);
-					File file2 = fileChooser2.getSelectedFile();
-					if (response == JFileChooser.APPROVE_OPTION) {
-						MarvinImage imageIn = MarvinImageIO.loadImage(file.toString());;
-						MarvinImage imageOut = new MarvinImage();
-						/*
+				MarvinImage imageIn = MarvinImageIO.loadImage(getAddImage().getFileAdd_image().toString());;
+				MarvinImage imageOut = new MarvinImage();
+				JFileChooser fileChooser2 = new JFileChooser();
+				fileChooser2.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+				int response = fileChooser2.showOpenDialog(null);
+				File file2 = fileChooser2.getSelectedFile();
+				if (response == JFileChooser.APPROVE_OPTION) {	
+						
+					/*
 						 //y[i]-vector cu numarul de taguri ale tagurilor respective
 						 //ta[i]-vector cu denumirile tagurilor
 						 //numarul de pe pozitia 0 a vectorului y corespunde cu numele de pe pozitia 0 a vectorului ta

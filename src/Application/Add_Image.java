@@ -23,11 +23,15 @@ public class Add_Image {
 	private JFrame frame;
 	protected static File file;
 	
+	
 	public Add_Image(JFrame frame, JButton Add_Image) {
 		this.frame = frame;
 		this.Add_Image = Add_Image;
 	}
 	
+	public File getFileAdd_image(){
+		return this.file;
+	}
 	
 	public void Load() {
 		Add_Image.addActionListener(new ActionListener() {
