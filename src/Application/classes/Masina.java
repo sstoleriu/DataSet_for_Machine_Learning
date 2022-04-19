@@ -19,12 +19,10 @@ import marvin.io.MarvinImageIO;
 public class Masina implements Obiect, Draw{
     private Color culoare;
     private static Add_Image Add_image;
-    //private final JButton Done;
     
     public Masina(JFrame frame, Add_Image Add_image){
     	this.Add_image = Add_image;
     	this.culoare=Color.RED;
-    	//this.Done = Done;
     }
     
 	@Override

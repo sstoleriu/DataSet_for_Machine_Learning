@@ -11,12 +11,10 @@ import Application.interfaces.Obiect;
 public class Indicator implements Obiect, Draw{
 	private Color culoare;
     private static Add_Image Add_image;
-    //private final JButton Done;
     
     public Indicator(JFrame frame, Add_Image Add_image){
     	this.Add_image = Add_image;
     	this.culoare=Color.ORANGE;
-    	//this.Done = Done;
     }
     
 	@Override

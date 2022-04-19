@@ -16,7 +16,6 @@ public class Cladire implements Obiect, Draw{
     public Cladire(JFrame frame, Add_Image Add_image){
     	this.Add_image = Add_image;
     	this.culoare=Color.PINK;
-    	//this.Done = Done;
     }
     
 	@Override
