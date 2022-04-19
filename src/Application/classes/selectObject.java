@@ -55,7 +55,38 @@ public class selectObject {
 								break;
 								}
 				case "Bicicleta":{
-								//System.out.println("biciletaaaa");
+								Bicicleta b1=new Bicicleta(getFrame(), getAddImage());
+								b1.draw();
+								break;
+								}
+				case "Autobuz":{
+								Autobuz a1 = new Autobuz(getFrame(), getAddImage());
+								a1.draw();
+								break;
+								}
+				case "Motocicleta":{
+								Motocicleta mot1=new Motocicleta(getFrame(), getAddImage());
+								mot1.draw();
+								break;
+								}
+				case "Cladire":{
+								Cladire c1=new Cladire(getFrame(), getAddImage());
+								c1.draw();
+								break;
+								}
+				case "Pieton":{
+								Pieton p1=new Pieton(getFrame(), getAddImage());
+								p1.draw();
+								break;
+								}
+				case "Indicator":{
+								Indicator i1=new Indicator(getFrame(), getAddImage());
+								i1.draw();
+								break;
+								}
+				case "Semafor":{
+								Semafor s1=new Semafor(getFrame(), getAddImage());
+								s1.draw();
 								break;
 								}
 				default:
