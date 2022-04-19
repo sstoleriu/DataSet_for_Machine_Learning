@@ -1,6 +1,7 @@
-package Application;
+package Application.classes;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 
 public class GUI {
@@ -9,6 +10,7 @@ public class GUI {
 	private JButton Add_Image;
 	private JButton Select_Object;
 	private JButton Export;
+	private JComboBox<String> selectObjectVar;
 	
 	/**
 	 * Create the application.
@@ -17,6 +19,8 @@ public class GUI {
 		initialize();
 		Add_Image imagine = new Add_Image(frame, Add_Image);
 		imagine.Load();
+		selectObject selectObject = new selectObject(frame, imagine, selectObjectVar);
+		selectObject.createObjectAndDraw();
 	}
 	
 	/**
@@ -40,6 +44,11 @@ public class GUI {
 		Export = new JButton("Export");
 		Export.setBounds(839, 288, 187, 41);
 		frame.getContentPane().add(Export);
+		
+		String[] optionsToChoose = {"Masina","Masina", "Bicicleta", "Motocicleta", "Indicator","Pieton","Cladire","None of the listed"};
+		selectObjectVar = new JComboBox<>(optionsToChoose);
+		selectObjectVar.setBounds(839, 400, 187, 41);
+		frame.getContentPane().add(selectObjectVar);
 	}
 
 		public JFrame getFrame() {
