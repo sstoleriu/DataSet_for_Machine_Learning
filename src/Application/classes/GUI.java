@@ -45,7 +45,7 @@ public class GUI {
 		Export.setBounds(839, 288, 187, 41);
 		frame.getContentPane().add(Export);
 		
-		String[] optionsToChoose = {"Masina","Masina", "Bicicleta", "Motocicleta", "Indicator","Pieton","Cladire","None of the listed"};
+		String[] optionsToChoose = {"Masina", "Bicicleta", "Motocicleta", "Cladire","Pieton","Indicator","Cladire","Semafor"};
 		selectObjectVar = new JComboBox<>(optionsToChoose);
 		selectObjectVar.setBounds(839, 400, 187, 41);
 		frame.getContentPane().add(selectObjectVar);

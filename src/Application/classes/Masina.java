@@ -23,7 +23,7 @@ public class Masina implements Obiect, Draw{
     
     public Masina(JFrame frame, Add_Image Add_image){
     	this.Add_image = Add_image;
-    	this.culoare=Color.BLUE;
+    	this.culoare=Color.RED;
     	//this.Done = Done;
     }
     
