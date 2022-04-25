@@ -1,6 +1,8 @@
 package Application;
 
 import java.awt.EventQueue;
+
+import Application.classes.GUI;
 public class App {
 
 	/**
