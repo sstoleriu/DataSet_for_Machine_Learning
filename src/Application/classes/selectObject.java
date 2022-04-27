@@ -2,15 +2,19 @@ package Application.classes;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+
+import Application.interfaces.Obiect;
 
 public class selectObject {
 
 	private JFrame frame;
 	private Add_Image Add_image;
 	private JComboBox<String> selectObject;
+	private static ArrayList<Obiect> listOfObjects = new ArrayList<Obiect>();
 
 	public selectObject(JFrame frame, Add_Image Add_Image, JComboBox<String> selectObject) {
 		this.selectObject = selectObject;
@@ -42,58 +46,57 @@ public class selectObject {
 				String alegere = getSelectObject().getSelectedItem().toString();
 				switch (alegere) {
 				case "Masina": {
-						Masina m1 = new Masina(getAddImage());
-				
-						MouseClick ms1 = new MouseClick(m1);
+						Masina m1 = new Masina(getAddImage());				
+						MouseClick ms1 = new MouseClick(m1,listOfObjects);
 						getAddImage();
 						Add_Image.geImagePanel().addMouseListener(ms1);
 						break;
 				}
 				case "Bicicleta": {
 					Bicicleta b1 = new Bicicleta(getAddImage());
-					MouseClick ms1 = new MouseClick(b1);
+					MouseClick ms1 = new MouseClick(b1,listOfObjects);
 					getAddImage();
 					Add_Image.geImagePanel().addMouseListener(ms1);
 					break;
 				}
 				case "Autobuz": {
 					Autobuz a1 = new Autobuz(getAddImage());
-					MouseClick ms1 = new MouseClick(a1);
+					MouseClick ms1 = new MouseClick(a1,listOfObjects);
 					getAddImage();
 					Add_Image.geImagePanel().addMouseListener(ms1);
 					break;
 				}
 				case "Motocicleta": {
 					Motocicleta mot1 = new Motocicleta(getAddImage());
-					MouseClick ms1 = new MouseClick(mot1);
+					MouseClick ms1 = new MouseClick(mot1,listOfObjects);
 					getAddImage();
 					Add_Image.geImagePanel().addMouseListener(ms1);
 					break;
 				}
 				case "Cladire": {
 					Cladire c1 = new Cladire(getAddImage());
-					MouseClick ms1 = new MouseClick(c1);
+					MouseClick ms1 = new MouseClick(c1,listOfObjects);
 					getAddImage();
 					Add_Image.geImagePanel().addMouseListener(ms1);
 					break;
 				}
 				case "Pieton": {
 					Pieton p1 = new Pieton(getAddImage());
-					MouseClick ms1 = new MouseClick(p1);
+					MouseClick ms1 = new MouseClick(p1,listOfObjects);
 					getAddImage();
 					Add_Image.geImagePanel().addMouseListener(ms1);
 					break;
 				}
 				case "Indicator": {
 					Indicator i1 = new Indicator(getAddImage());
-					MouseClick ms1 = new MouseClick(i1);
+					MouseClick ms1 = new MouseClick(i1,listOfObjects);
 					getAddImage();
 					Add_Image.geImagePanel().addMouseListener(ms1);
 					break;
 				}
 				case "Semafor": {
 					Semafor s1 = new Semafor(getAddImage());
-					MouseClick ms1 = new MouseClick(s1);
+					MouseClick ms1 = new MouseClick(s1,listOfObjects);
 					getAddImage();
 					Add_Image.geImagePanel().addMouseListener(ms1);
 					break;
@@ -104,5 +107,9 @@ public class selectObject {
 			}
 		});
 
+	}
+	
+	public static ArrayList<Obiect> getListOfObjects(){
+		return listOfObjects;
 	}
 }

@@ -1,5 +1,8 @@
 package Application.classes;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -44,6 +47,16 @@ public class GUI {
 		Export = new JButton("Export");
 		Export.setBounds(839, 288, 187, 41);
 		frame.getContentPane().add(Export);
+		
+		//E DOAR PT UN TEST, IN GUI NU FOR FI ACTION LISTENERE!
+		Export.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				System.out.println(selectObject.getListOfObjects().get(0).getReact()+ " "+ selectObject.getListOfObjects().get(1).getReact());
+			}
+		});
 		
 
 		String[] optionsToChoose = {"Masina", "Bicicleta", "Motocicleta", "Cladire","Pieton","Indicator","Semafor"};
