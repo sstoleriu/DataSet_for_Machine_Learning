@@ -2,38 +2,32 @@ package Application.classes;
 import Application.interfaces.*;
 
 import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Point;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
-
-import javax.imageio.ImageIO;
-import javax.swing.JButton;
-import javax.swing.JFileChooser;
-import javax.swing.JFrame;
+import java.awt.Rectangle;
 
 import marvin.image.MarvinImage;
-import marvin.image.MarvinSegment;
-import marvin.io.MarvinImageIO;
+
 
 public class Masina implements Obiect, Draw{
     private Color culoare;
     private static Add_Image Add_image;
-	public Point p1;
-	public Point p2;
+	private Point p1;
+	private Point p2;
 	
     
-    public Masina(JFrame frame, Add_Image Add_image){
+    public Masina(Add_Image Add_image){
     	this.Add_image = Add_image;
-    	this.culoare=Color.RED;
-    	
+    	this.culoare=Color.RED;    	
     }
     
+    public void setPoint1(Point p) {
+    	this.p1 = p;
+    }
 
-
+    public void setPoint2(Point p) {
+    	this.p2 = p;
+    }
+    
 	@Override
 	public Color getCuloare() {
 		return this.culoare;
@@ -43,36 +37,19 @@ public class Masina implements Obiect, Draw{
 		return Add_image;
 	}
 	
-	public void draw() {
-		
-
-
-				
-				System.out.println(this.p1);
-				System.out.println(this.p2);
-				
-				int width;
-				int height;
-				
-				width=p2.x-p1.x;
-				height=p1.y-p2.y;
-		
-				MarvinImage imageIn = Add_Image.getImage();
-		
-		 if(this.p1==null && this.p2==null)
-		 {
-			 System.out.println("\n Punctele nu au o valoare");
-		 }
-		 else
-		 {
-			 
-		 imageIn.drawRect(p1.x,p1.y, width, height, culoare);
-		
-		 }
-		 Add_Image.geImagePanel().setImage(imageIn);
 	
-		
-		 
-}}
+	public void draw() {
+		if (this.p1.x == 0 || this.p1.y == 0 || this.p2.x == 0 || this.p2.y == 0) {
+			System.out.println("\n Punctele nu au o valoare");
+		} else {
+			MarvinImage imageIn = Add_Image.getImage();
+			Rectangle rect = new Rectangle(p1);
+			rect.add(p2);
+			imageIn.drawRect(rect.x, rect.y, rect.width, rect.height, culoare);
+			Add_Image.geImagePanel().setImage(imageIn);
+		}
+	}
+	
+}
 	
 
