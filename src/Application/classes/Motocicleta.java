@@ -2,10 +2,7 @@ package Application.classes;
 
 import java.awt.Color;
 import java.awt.Point;
-
-import javax.swing.JFrame;
-
-import com.sun.glass.events.MouseEvent;
+import java.awt.Rectangle;
 
 import marvin.image.MarvinImage;
 import Application.interfaces.Draw;
@@ -17,7 +14,7 @@ public class Motocicleta implements Obiect, Draw{
     public Point p1;
 	public Point p2;
     
-    public Motocicleta(JFrame frame, Add_Image Add_image){
+    public Motocicleta(Add_Image Add_image){
     	this.Add_image = Add_image;
     	this.culoare=Color.GREEN;
     }
@@ -32,28 +29,26 @@ public class Motocicleta implements Obiect, Draw{
 	}
 	
 	public void draw() {
-		System.out.println(this.p1);
-		System.out.println(this.p2);
-		
-		int width;
-		int height;
-		
-		width=p2.x-p1.x;
-		height=p1.y-p2.y;
-
-		MarvinImage imageIn = Add_Image.getImage();
-
- if(this.p1==null && this.p2==null)
- {
-	 System.out.println("\n Punctele nu au o valoare");
- }
- else
- {
-	 
- imageIn.drawRect(p1.x,p1.y, width, height, culoare);
-
- }
- Add_Image.geImagePanel().setImage(imageIn);
-	
+		if (this.p1.x == 0 || this.p1.y == 0 || this.p2.x == 0 || this.p2.y == 0) {
+			System.out.println("\n Punctele nu au o valoare");
+		} else {
+			MarvinImage imageIn = Add_Image.getImage();
+			Rectangle rect = new Rectangle(p1);
+			rect.add(p2);
+			imageIn.drawRect(rect.x, rect.y, rect.width, rect.height, culoare);
+			Add_Image.geImagePanel().setImage(imageIn);
 		}
+	}
+
+	@Override
+	public void setPoint1(Point p) {
+		// TODO Auto-generated method stub
+		this.p1 = p;
+	}
+
+	@Override
+	public void setPoint2(Point p) {
+		// TODO Auto-generated method stub
+		this.p2 = p;
+	}
 }

@@ -7,7 +7,6 @@ import java.awt.event.ActionListener;
 import java.io.File;
 
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 
@@ -22,7 +21,7 @@ public class Add_Image {
 	private MarvinImage backupImage;
 	private JButton Add_Image;
 	private JFrame frame;
-	protected static File file;
+	private static File file;
 	
 	public Add_Image(JFrame frame, JButton Add_Image) {
 		this.frame = frame;
