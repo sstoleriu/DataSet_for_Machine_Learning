@@ -7,28 +7,34 @@ import java.awt.event.MouseListener;
 
 import javax.swing.JComboBox;
 
+import marvin.image.MarvinImage;
+
 public class MouseClick implements MouseListener{
 	private boolean drawing=false;
-	private Point p1=new Point(0,0);
-	private Point p2=new Point(0,0);
+	public Point p1=new Point(0,0);
+	public Point p2=new Point(0,0);
 	
    public void mouseClicked(MouseEvent e) {
         if(this.drawing){
-        	this.p2=e.getPoint();
+        	p2=e.getPoint();
+        	this.drawing=false;
         	System.out.println(p2);
+        	System.out.println(" \n S-a printat p2 \n");
         }
         else {
-        	this.p1 = e.getPoint();
+        	p1 = e.getPoint();
         	this.drawing=true;
         	System.out.println(p1);
+        	System.out.println(" \n S-a printat p1 \n");
         }
     }
 
    public Point getPoint_P1(){
-	   return this.p1;
+	   
+	   return p1;
    }
    public Point getPoint_P2(){
-	   return this.p2;
+	   return p2;
    }
 
 	@Override
