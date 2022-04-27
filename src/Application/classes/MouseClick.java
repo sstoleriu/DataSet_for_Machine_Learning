@@ -3,6 +3,7 @@ package Application.classes;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 
 import Application.interfaces.Obiect;
 
@@ -11,9 +12,11 @@ public class MouseClick implements MouseListener{
 	private Point p1=new Point(0,0);
 	private Point p2=new Point(0,0);
 	private Obiect obiect;
+	private ArrayList<Obiect> listOfObjects;
 	
-	public MouseClick(Obiect obiect) {
+	public MouseClick(Obiect obiect, ArrayList<Obiect> listSlecObject) {
 		this.obiect = obiect;
+		this.listOfObjects = listSlecObject;
 	}
 	
    public void mouseClicked(MouseEvent e) {
@@ -25,6 +28,7 @@ public class MouseClick implements MouseListener{
         	this.obiect.setPoint1(this.p1);
         	this.obiect.setPoint2(this.p2);
         	this.obiect.draw();
+        	this.listOfObjects.add(obiect);
         }
         else {
         	p1 = e.getPoint();

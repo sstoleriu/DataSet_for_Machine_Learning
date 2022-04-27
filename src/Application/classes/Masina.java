@@ -13,7 +13,7 @@ public class Masina implements Obiect, Draw{
     private static Add_Image Add_image;
 	private Point p1;
 	private Point p2;
-	
+	private Rectangle rect;
     
     public Masina(Add_Image Add_image){
     	this.Add_image = Add_image;
@@ -43,11 +43,15 @@ public class Masina implements Obiect, Draw{
 			System.out.println("\n Punctele nu au o valoare");
 		} else {
 			MarvinImage imageIn = Add_Image.getImage();
-			Rectangle rect = new Rectangle(p1);
-			rect.add(p2);
+			this.rect = new Rectangle(p1);
+			this.rect.add(p2);
 			imageIn.drawRect(rect.x, rect.y, rect.width, rect.height, culoare);
 			Add_Image.geImagePanel().setImage(imageIn);
 		}
+	}
+	
+	public Rectangle getReact() {
+		return this.rect;
 	}
 	
 }
