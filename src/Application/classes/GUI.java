@@ -2,10 +2,13 @@ package Application.classes;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Vector;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+
+import Application.interfaces.Obiect;
 
 public class GUI {
 	
@@ -13,17 +16,16 @@ public class GUI {
 	private JButton Add_Image;
 	private JButton Select_Object;
 	private JButton Export;
-	private JComboBox<String> selectObjectVar;
+	private static JComboBox<String> selectObjectVar;
+	
 	
 	/**
 	 * Create the application.
 	 */
 	public GUI() {
 		initialize();
-		Add_Image imagine = new Add_Image(frame, Add_Image);
+		Add_Image imagine = new Add_Image(frame, Add_Image, selectObjectVar);
 		imagine.Load();
-		selectObject selectObject = new selectObject(frame, imagine, selectObjectVar);
-		selectObject.createObjectAndDraw();
 	}
 	
 	/**
@@ -46,18 +48,7 @@ public class GUI {
 		
 		Export = new JButton("Export");
 		Export.setBounds(839, 288, 187, 41);
-		frame.getContentPane().add(Export);
-		
-		//E DOAR PT UN TEST, IN GUI NU FOR FI ACTION LISTENERE!
-		Export.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				System.out.println(selectObject.getListOfObjects().get(0).getReact()+ " "+ selectObject.getListOfObjects().get(1).getReact());
-			}
-		});
-		
+		frame.getContentPane().add(Export);			
 
 		String[] optionsToChoose = {"Masina", "Bicicleta", "Motocicleta", "Cladire","Pieton","Indicator","Semafor"};
 		selectObjectVar = new JComboBox<>(optionsToChoose);
@@ -67,5 +58,9 @@ public class GUI {
 
 		public JFrame getFrame() {
 			return frame;
+		}
+		
+		public static JComboBox<String> getSelectObjectVar(){
+			return selectObjectVar;
 		}
 }
