@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 
@@ -22,10 +23,12 @@ public class Add_Image {
 	private JButton Add_Image;
 	private JFrame frame;
 	private static File file;
+	private static JComboBox<String> selectObjectVar;
 	
-	public Add_Image(JFrame frame, JButton Add_Image) {
+	public Add_Image(JFrame frame, JButton Add_Image, JComboBox<String> selectObject) {
 		this.frame = frame;
 		this.Add_Image = Add_Image;
+		this.selectObjectVar = selectObject;
 	}
 	
 	public File getFileAdd_image(){
@@ -41,6 +44,7 @@ public class Add_Image {
 	}
 	
 	public void Load() {
+		Add_Image add_imageTemp = this;
 		Add_Image.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JFileChooser fileChooser = new JFileChooser();
@@ -55,7 +59,9 @@ public class Add_Image {
 					image = MarvinImageIO.loadImage(file.toString());
 			        backupImage = image.clone();
 			        scale(backupImage, image, 800, 543);
-			        imagePanel.setImage(image); 
+			        imagePanel.setImage(image);
+			        selectObject selectObject = new selectObject(frame, add_imageTemp, selectObjectVar);
+					selectObject.createObjectAndDraw();
 				}
 			}
 		});
