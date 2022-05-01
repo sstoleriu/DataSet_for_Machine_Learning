@@ -1,7 +1,14 @@
-package Application;
+package Application.classes;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Vector;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
+
+import Application.interfaces.Obiect;
 
 public class GUI {
 	
@@ -9,16 +16,18 @@ public class GUI {
 	private JButton Add_Image;
 	private JButton Select_Object;
 	private JButton Export;
+	private static JComboBox<String> selectObjectVar;
+	
 	
 	/**
 	 * Create the application.
 	 */
 	public GUI() {
 		initialize();
-		Add_Image imagine = new Add_Image(frame, Add_Image);
+		Add_Image imagine = new Add_Image(frame, Add_Image, selectObjectVar);
+		Export imagine2= new Export(frame,Export,imagine);
 		imagine.Load();
-		Export imagine2= new Export(frame,Export,imagine);		
-		imagine2.Load();
+		imagine2.Load2();
 	}
 	
 	/**
@@ -41,11 +50,19 @@ public class GUI {
 		
 		Export = new JButton("Export");
 		Export.setBounds(839, 288, 187, 41);
-		frame.getContentPane().add(Export);
-		
+		frame.getContentPane().add(Export);			
+
+		String[] optionsToChoose = {"Masina", "Bicicleta", "Motocicleta", "Cladire","Pieton","Indicator","Semafor"};
+		selectObjectVar = new JComboBox<>(optionsToChoose);
+		selectObjectVar.setBounds(839, 400, 187, 41);
+		frame.getContentPane().add(selectObjectVar);
 	}
 
 		public JFrame getFrame() {
 			return frame;
+		}
+		
+		public static JComboBox<String> getSelectObjectVar(){
+			return selectObjectVar;
 		}
 }
