@@ -26,6 +26,8 @@ public class GUI {
 		initialize();
 		Add_Image imagine = new Add_Image(frame, Add_Image, selectObjectVar);
 		imagine.Load();
+		Export imagine2= new Export(frame,Export,imagine);
+		imagine2.Load2();
 	}
 	
 	/**
