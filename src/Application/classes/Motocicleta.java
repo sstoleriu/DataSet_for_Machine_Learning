@@ -47,13 +47,11 @@ public class Motocicleta implements Obiect, Draw{
 
 	@Override
 	public void setPoint1(Point p) {
-		// TODO Auto-generated method stub
 		this.p1 = p;
 	}
 
 	@Override
 	public void setPoint2(Point p) {
-		// TODO Auto-generated method stub
 		this.p2 = p;
 	}
 }
