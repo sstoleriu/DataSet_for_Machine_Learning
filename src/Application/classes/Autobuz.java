@@ -25,6 +25,10 @@ public class Autobuz implements Obiect, Draw{
 		return this.culoare;
 	}
 	
+	public String getName(){
+		return this.getClass().getSimpleName();
+	}
+	
 	public static Add_Image getAddImage(){
 		return Add_image;
 	}
@@ -56,4 +60,5 @@ public class Autobuz implements Obiect, Draw{
 		
 		this.p2 = p;
 	}
+	
 }

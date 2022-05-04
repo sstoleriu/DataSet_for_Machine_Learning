@@ -24,11 +24,13 @@ public class Add_Image {
 	private JFrame frame;
 	private static File file;
 	private static JComboBox<String> selectObjectVar;
+	private JButton export;
 	
-	public Add_Image(JFrame frame, JButton Add_Image, JComboBox<String> selectObject) {
+	public Add_Image(JFrame frame, JButton Add_Image, JComboBox<String> selectObject, JButton export) {
 		this.frame = frame;
 		this.Add_Image = Add_Image;
 		this.selectObjectVar = selectObject;
+		this.export = export;
 	}
 	
 	public File getFileAdd_image(){
@@ -60,7 +62,7 @@ public class Add_Image {
 			        backupImage = image.clone();
 			        scale(backupImage, image, 800, 543);
 			        imagePanel.setImage(image);
-			        selectObject selectObject = new selectObject(frame, add_imageTemp, selectObjectVar);
+			        selectObject selectObject = new selectObject(frame, add_imageTemp, selectObjectVar, export);
 					selectObject.createObjectAndDraw();
 				}
 			}
