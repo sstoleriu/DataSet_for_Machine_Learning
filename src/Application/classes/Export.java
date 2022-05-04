@@ -40,6 +40,7 @@ public class Export{
 				int response = fileChooser2.showOpenDialog(null);
 				File file2 = fileChooser2.getSelectedFile();
 				if (response == JFileChooser.APPROVE_OPTION) {	
+					Vector<Object> vctneed=getListOfObjects();
 					/*	Vector<Object> vctneed=getListOfObjects();
 					 	VctCrop vct1=new VctCrop(vctneed);
 					 	String vector1[]=vct1.getvct();
