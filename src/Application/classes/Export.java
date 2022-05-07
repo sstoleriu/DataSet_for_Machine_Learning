@@ -20,11 +20,13 @@ public class Export{
 	private JButton Export;
 	private static Add_Image Add_image;
 	private Vector<Obiect> listOfObjects;
+	private MarvinImage cropImage;
 	
-	public Export(JFrame frame,JButton Export, Add_Image Add_image, Vector<Obiect> listOfObjects){
+	public Export(JFrame frame,JButton Export, Add_Image Add_image, Vector<Obiect> listOfObjects, MarvinImage cropImage){
 		Application.classes.Export.Add_image = Add_image;
 		this.Export=Export;
 		this.listOfObjects = listOfObjects;
+		this.cropImage=cropImage;
 	}
 
 	public static Add_Image getAddImage(){
@@ -36,7 +38,6 @@ public class Export{
 		Export.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-				MarvinImage imageIn = MarvinImageIO.loadImage(getAddImage().getFileAdd_image().toString());;
 				MarvinImage imageOut = new MarvinImage();
 				JFileChooser fileChooser2 = new JFileChooser();
 				fileChooser2.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
@@ -55,10 +56,10 @@ public class Export{
 					 		for(int j=0;j<namevct.length;j++){
 					 			if(allvct.get(i).equals(namevct[j])){
 					 				java.awt.Rectangle rect=listOfObjects.get(i).getReact();
-					 				crop(imageIn,imageOut,rect.x,rect.y,rect.width,rect.height);
+					 				crop(cropImage,imageOut,rect.x,rect.y,rect.width,rect.height);
 					 				conti=contorvct[j]-aux[j];
 					 				aux[j]=aux[j]-1;
-					 				MarvinImageIO.saveImage(imageOut, file2.getAbsolutePath()+'/'+allvct.get(i)+"("+conti+").jpg");
+					 				MarvinImageIO.saveImage(imageOut, file2.getAbsolutePath()+'/'+allvct.get(i)+" ("+conti+").jpg");
 					 			}
 					 		}
 					 	}

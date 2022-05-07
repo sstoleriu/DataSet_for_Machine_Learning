@@ -61,8 +61,9 @@ public class Add_Image {
 					image = MarvinImageIO.loadImage(file.toString());
 			        backupImage = image.clone();
 			        scale(backupImage, image, 800, 543);
+			        MarvinImage cropImage=image.clone();
 			        imagePanel.setImage(image);
-			        selectObject selectObject = new selectObject(frame, add_imageTemp, selectObjectVar, export);
+			        selectObject selectObject = new selectObject(frame, add_imageTemp, selectObjectVar, export,cropImage);
 					selectObject.createObjectAndDraw();
 				}
 			}

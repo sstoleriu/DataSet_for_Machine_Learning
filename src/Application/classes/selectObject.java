@@ -2,7 +2,6 @@ package Application.classes;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.swing.JButton;
@@ -10,6 +9,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 
 import Application.interfaces.Obiect;
+import marvin.image.MarvinImage;
 
 public class selectObject {
 
@@ -18,17 +18,19 @@ public class selectObject {
 	private JComboBox<String> selectObject;
 	private Vector<Obiect> listOfObjects = new Vector<Obiect>();
 	private JButton export;
+	private MarvinImage cropImage;
 	
 //	public selectObject(JFrame frame, JComboBox<String> selectObject) {
 //		this.selectObject = selectObject;
 //		this.frame = frame;
 //	}
 
-	public selectObject(JFrame frame, Add_Image Add_Image, JComboBox<String> selectObject, JButton export) {
+	public selectObject(JFrame frame, Add_Image Add_Image, JComboBox<String> selectObject, JButton export,MarvinImage cropImage) {
 		this.selectObject = selectObject;
 		this.frame = frame;
 		this.Add_image = Add_Image;
 		this.export = export;
+		this.cropImage=cropImage;
 	}
 
 	public JFrame getFrame() {
@@ -50,7 +52,7 @@ public class selectObject {
 	public void createObjectAndDraw() {
 		MouseClick ms1 = new MouseClick(listOfObjects, getAddImage());
 		getAddImage().geImagePanel().addMouseListener(ms1);
-		Export exportImage = new Export(frame, export, getAddImage(), this.listOfObjects);
+		Export exportImage = new Export(frame, export, getAddImage(), this.listOfObjects,cropImage);
 		exportImage.Load2();
 		
 		
