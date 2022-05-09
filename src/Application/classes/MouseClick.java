@@ -3,7 +3,6 @@ package Application.classes;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.ArrayList;
 import java.util.Vector;
 
 import Application.interfaces.Obiect;
@@ -21,7 +20,7 @@ public class MouseClick implements MouseListener{
 	}
 	
 	public MouseClick(Vector<Obiect> listSlecObject, Add_Image add_image) {
-		this.listOfObjects = listSlecObject;
+		MouseClick.listOfObjects = listSlecObject;
 		this.add_image = add_image;
 	}
 	
@@ -37,7 +36,7 @@ public class MouseClick implements MouseListener{
 					m1.setPoint1(this.p1);
 					m1.setPoint2(this.p2);
 					m1.draw();
-					this.listOfObjects.add(m1);
+					MouseClick.listOfObjects.add(m1);
 					break;
 			}
 			case "Bicicleta": {
@@ -45,7 +44,7 @@ public class MouseClick implements MouseListener{
 				b1.setPoint1(this.p1);
 				b1.setPoint2(this.p2);
 				b1.draw();
-				this.listOfObjects.add(b1);
+				MouseClick.listOfObjects.add(b1);
 				break;
 			}
 			case "Autobuz": {
@@ -53,8 +52,8 @@ public class MouseClick implements MouseListener{
 				a1.setPoint1(this.p1);
 				a1.setPoint2(this.p2);
 				a1.draw();
-				this.listOfObjects.add(a1);
-				System.out.println(this.optiune + " " +this.listOfObjects);
+				MouseClick.listOfObjects.add(a1);
+				System.out.println(this.optiune + " " +MouseClick.listOfObjects);
 				break;
 			}
 			case "Motocicleta": {
@@ -62,7 +61,7 @@ public class MouseClick implements MouseListener{
 				mot1.setPoint1(this.p1);
 				mot1.setPoint2(this.p2);
 				mot1.draw();
-				this.listOfObjects.add(mot1);
+				MouseClick.listOfObjects.add(mot1);
 				break;
 			}
 			case "Cladire": {
@@ -70,7 +69,7 @@ public class MouseClick implements MouseListener{
 				c1.setPoint1(this.p1);
 				c1.setPoint2(this.p2);
 				c1.draw();
-				this.listOfObjects.add(c1);
+				MouseClick.listOfObjects.add(c1);
 				break;
 			}
 			case "Pieton": {
@@ -78,7 +77,7 @@ public class MouseClick implements MouseListener{
 				p1.setPoint1(this.p1);
 				p1.setPoint2(this.p2);
 				p1.draw();
-				this.listOfObjects.add(p1);
+				MouseClick.listOfObjects.add(p1);
 				break;
 			}
 			case "Indicator": {
@@ -86,7 +85,7 @@ public class MouseClick implements MouseListener{
 				i1.setPoint1(this.p1);
 				i1.setPoint2(this.p2);
 				i1.draw();
-				this.listOfObjects.add(i1);
+				MouseClick.listOfObjects.add(i1);
 				break;
 			}
 			case "Semafor": {
@@ -94,7 +93,7 @@ public class MouseClick implements MouseListener{
 				s1.setPoint1(this.p1);
 				s1.setPoint2(this.p2);
 				s1.draw();
-				this.listOfObjects.add(s1);
+				MouseClick.listOfObjects.add(s1);
 				break;
 			}
 			default:
