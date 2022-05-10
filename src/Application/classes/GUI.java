@@ -26,24 +26,43 @@ public class GUI {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		/**
+		 * Adaugare frame
+		 */
 		frame = new JFrame();
 		frame.setBounds(100, 100, 1050, 600);
+		
+		/**
+		 *  Optiunea de EXIT
+		 */
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setTitle("DataSet");
 		frame.getContentPane().setLayout(null);
 		
+		/**
+		 * Buton de adaugare imagine
+		 */
 		Add_Image = new JButton("Add Image");
 		Add_Image.setBounds(839, 152, 187, 41);
 		frame.getContentPane().add(Add_Image);
 		
+		/**
+		 * Buton de selectare obiect
+		 */
 		Select_Object = new JButton("Select Object");
 		Select_Object.setBounds(839, 220, 187, 41);
 		frame.getContentPane().add(Select_Object);
 		
+		/**
+		 * Buton de export
+		 */
 		Export = new JButton("Export");
 		Export.setBounds(839, 288, 187, 41);
-		frame.getContentPane().add(Export);			
-
+		frame.getContentPane().add(Export);		
+		
+		/**
+		 * Optiuni de selectare
+		 */
 		String[] optionsToChoose = {"Masina", "Bicicleta", "Motocicleta", "Cladire","Pieton","Indicator","Semafor"};
 		selectObjectVar = new JComboBox<>(optionsToChoose);
 		selectObjectVar.setBounds(839, 400, 187, 41);
@@ -54,6 +73,10 @@ public class GUI {
 			return frame;
 		}
 		
+		/**
+		 * Getter pentru preluarea obiectului selectat
+		 * @return selectObjectVar Obiect selectat
+		 */
 		public static JComboBox<String> getSelectObjectVar(){
 			return selectObjectVar;
 		}

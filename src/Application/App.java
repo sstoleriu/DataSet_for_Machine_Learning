@@ -3,6 +3,10 @@ package Application;
 import java.awt.EventQueue;
 
 import Application.classes.GUI;
+/**
+ * @author     Stoleriu Stefan, Leonte Gabriel, Ignat Mihaela-Loredana, Brailescu Andrei 
+ * @version     1.8.0_261-b12
+ */
 public class App {
 
 	/**
