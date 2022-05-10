@@ -20,15 +20,26 @@ public class Bicicleta implements Obiect, Draw{
     	this.culoare=Color.BLUE;
     }
     
+    /**
+     * Getter de tip Color pentru returnarea culorii
+     * @return culoare
+     */
 	@Override
 	public Color getCuloare() {
 		return this.culoare;
 	}
 	
+	/**
+	 * Getter pentru Adaugarea imaginii
+	 * @return Add_image Imagine adaugata
+	 */
 	public static Add_Image getAddImage(){
 		return Add_image;
 	}
 	
+	/**
+	 * Metoda de desenare a chenarului
+	 */
 	public void draw() {
 		if (this.p1.x == 0 || this.p1.y == 0 || this.p2.x == 0 || this.p2.y == 0) {
 			System.out.println("\n Punctele nu au o valoare");
@@ -41,6 +52,9 @@ public class Bicicleta implements Obiect, Draw{
 		}
 	}
 	
+	/**
+	 * 
+	 */
 	public Rectangle getReact() {
 		return this.rect;
 	}

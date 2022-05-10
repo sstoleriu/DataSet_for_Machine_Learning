@@ -68,7 +68,10 @@ public class GUI {
 		selectObjectVar.setBounds(839, 400, 187, 41);
 		frame.getContentPane().add(selectObjectVar);
 	}
-
+		/**
+		 * Getter pentru returnarea frame-ului
+		 * @return frame Frame
+		 */
 		public JFrame getFrame() {
 			return frame;
 		}
