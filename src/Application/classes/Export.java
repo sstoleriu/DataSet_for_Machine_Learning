@@ -9,6 +9,7 @@ import java.util.Vector;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import Application.interfaces.Obiect;
 import static marvin.MarvinPluginCollection.*;
@@ -52,17 +53,20 @@ public class Export{
 				 	Integer contorvct[]=vct2.getContor_VctFreq();
 				 	Integer aux[]=Arrays.copyOf(contorvct, contorvct.length);
 				 	int conti;
-					 	for(int i=0;i<allvct.size();i++){
-					 		for(int j=0;j<namevct.length;j++){
-					 			if(allvct.get(i).equals(namevct[j])){
-					 				java.awt.Rectangle rect=listOfObjects.get(i).getReact();
-					 				crop(cropImage,imageOut,rect.x,rect.y,rect.width,rect.height);
-					 				conti=contorvct[j]-aux[j];
-					 				aux[j]=aux[j]-1;
-					 				MarvinImageIO.saveImage(imageOut, file2.getAbsolutePath()+'/'+allvct.get(i)+" ("+conti+").jpg");
+					 for(int i=0;i<allvct.size();i++){
+					 	for(int j=0;j<namevct.length;j++){
+					 		if(allvct.get(i).equals(namevct[j])){
+					 			java.awt.Rectangle rect=listOfObjects.get(i).getReact();
+					 			crop(cropImage,imageOut,rect.x,rect.y,rect.width,rect.height);
+					 			conti=contorvct[j]-aux[j];
+					 			aux[j]=aux[j]-1;
+					 			MarvinImageIO.saveImage(imageOut, file2.getAbsolutePath()+'/'+allvct.get(i)+" ("+conti+").jpg");
 					 			}
 					 		}
 					 	}
+					JFrame mesaj = new JFrame();
+					JOptionPane.showMessageDialog(mesaj,"Export done!");
+					mesaj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				}
 			}
 		});
