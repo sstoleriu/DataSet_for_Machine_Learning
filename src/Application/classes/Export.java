@@ -64,9 +64,16 @@ public class Export{
 					 			}
 					 		}
 					 	}
+					 if(allvct.size()!=0){
 					JFrame mesaj = new JFrame();
 					JOptionPane.showMessageDialog(mesaj,"Export done!");
 					mesaj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+					 }
+					 else{
+						JFrame mesaj = new JFrame();
+						JOptionPane.showMessageDialog(mesaj,"Please select objects to export!");
+						mesaj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+					 }
 				}
 			}
 		});
