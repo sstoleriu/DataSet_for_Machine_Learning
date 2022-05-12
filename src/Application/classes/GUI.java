@@ -1,5 +1,6 @@
 package Application.classes;
 
+import java.io.IOException;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -8,53 +9,61 @@ public class GUI {
 	
 	private JFrame frame;
 	private JButton Add_Image;
-	private JButton Select_Object;
+	private JButton Tag_Menu;
 	private JButton Export;
+	private JButton Refresh;
+	private JButton Help;
 	private static JComboBox<String> selectObjectVar;
+	private ComboBox combobox = new ComboBox();
 	
 	
 	/**
 	 * Create the application.
+	 * @throws IOException 
 	 */
-	public GUI() {
+	public GUI() throws IOException {
 		initialize();
-		Add_Image imagine = new Add_Image(frame, Add_Image, selectObjectVar, Export);
+		Add_Image imagine = new Add_Image(frame, Add_Image, selectObjectVar, Export, Tag_Menu, combobox, Refresh, Help);
 		imagine.Load();
 	}
 	
 	/**
 	 * Initialize the contents of the frame.
+	 * @throws IOException 
 	 */
-	private void initialize() {
+	private void initialize() throws IOException {
+		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 1050, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setTitle("DataSet");
 		frame.getContentPane().setLayout(null);
 		
-		Add_Image = new JButton("Add Image");
-		Add_Image.setBounds(839, 152, 187, 41);
+		Help = new JButton("Help");
+		Help.setBounds(839, 49, 187, 41);
+		frame.getContentPane().add(Help);
+		
+		Refresh = new JButton("Refresh");
+		Refresh.setBounds(839, 121, 187, 41);
+		frame.getContentPane().add(Refresh);
+		Refresh.setEnabled(false);
+		
+		Add_Image = new JButton("Add image");
+		Add_Image.setBounds(839, 193, 187, 41);
 		frame.getContentPane().add(Add_Image);
 		
-		Select_Object = new JButton("Select Object");
-		Select_Object.setBounds(839, 220, 187, 41);
-		frame.getContentPane().add(Select_Object);
+		Tag_Menu = new JButton("Tag menu");
+		Tag_Menu.setBounds(839, 265, 187, 41);
+		frame.getContentPane().add(Tag_Menu);
 		
 		Export = new JButton("Export");
-		Export.setBounds(839, 288, 187, 41);
-		frame.getContentPane().add(Export);			
-
-		String[] optionsToChoose = {"Masina", "Bicicleta", "Motocicleta", "Cladire","Pieton","Indicator","Semafor"};
-		selectObjectVar = new JComboBox<>(optionsToChoose);
-		selectObjectVar.setBounds(839, 400, 187, 41);
-		frame.getContentPane().add(selectObjectVar);
+		Export.setBounds(839, 337, 187, 41);
+		frame.getContentPane().add(Export);
+		Export.setEnabled(false);
+		
 	}
 
 		public JFrame getFrame() {
 			return frame;
-		}
-		
-		public static JComboBox<String> getSelectObjectVar(){
-			return selectObjectVar;
 		}
 }

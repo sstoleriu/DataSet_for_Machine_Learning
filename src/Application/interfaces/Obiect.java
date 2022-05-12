@@ -6,9 +6,11 @@ import java.awt.Rectangle;
 import java.util.Vector;
 
 public interface Obiect {
+	public static final String Name = null;
     public static final Color Culoare = null;
     Vector<Integer>Coord = new Vector<Integer>();
     Color getCuloare();
+    String getName();
     void draw();
     void setPoint1(Point p);
     void setPoint2(Point p);

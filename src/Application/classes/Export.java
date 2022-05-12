@@ -1,5 +1,6 @@
 package Application.classes;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -7,6 +8,7 @@ import java.util.Arrays;
 import java.util.Vector;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -18,16 +20,25 @@ import marvin.io.MarvinImageIO;
 
 public class Export{
 	
-	private JButton Export;
+	private JButton export;
 	private static Add_Image Add_image;
 	private Vector<Obiect> listOfObjects;
 	private MarvinImage cropImage;
+	@SuppressWarnings("unused")
+	private static JComboBox<String> selectObjectVar;
+	@SuppressWarnings("unused")
+	private Vector<String> names=new Vector<>();
+	@SuppressWarnings("unused")
+	private Vector<Color> colors=new Vector<>();
 	
-	public Export(JFrame frame,JButton Export, Add_Image Add_image, Vector<Obiect> listOfObjects, MarvinImage cropImage){
+	public Export(JFrame frame,JButton export, Add_Image Add_image, Vector<Obiect> listOfObjects, MarvinImage cropImage, JComboBox<String> selectObjectVar, Vector<String> names, Vector<Color> colors){
 		Application.classes.Export.Add_image = Add_image;
-		this.Export=Export;
+		this.export=export;
 		this.listOfObjects = listOfObjects;
 		this.cropImage=cropImage;
+		Application.classes.Export.selectObjectVar = selectObjectVar;
+		this.names = names;
+		this.colors = colors;
 	}
 
 	public static Add_Image getAddImage(){
@@ -35,9 +46,10 @@ public class Export{
 	}
 	
 	
-	public void Load2() {		
-		Export.addActionListener(new ActionListener() {
-
+	public void load() {
+		Add_image.refreshImage();
+		export.setEnabled(true);
+		export.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				MarvinImage imageOut = new MarvinImage();
 				JFileChooser fileChooser2 = new JFileChooser();
@@ -68,10 +80,11 @@ public class Export{
 					JFrame mesaj = new JFrame();
 					JOptionPane.showMessageDialog(mesaj,"Export done!");
 					mesaj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+					System.out.println(allvct);
 					 }
 					 else{
 						JFrame mesaj = new JFrame();
-						JOptionPane.showMessageDialog(mesaj,"Please select objects to export!");
+						JOptionPane.showMessageDialog(mesaj,"Please, select objects to export", "Warning", JOptionPane.WARNING_MESSAGE);
 						mesaj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 					 }
 				}
