@@ -13,7 +13,7 @@ import java.util.Vector;
 public class FileName {
 
 	private Vector<String> names = new Vector<>();
-	File name = new File("src/Application/classes/name_tags");
+	File name = new File("src/Application/resources/name_tags");
 	Path path = Paths.get(name.getAbsolutePath());
 	
 	FileName() throws IOException{
@@ -27,6 +27,10 @@ public class FileName {
 	
 	public Vector<String> getlistname(){
 		return names;
+	}
+	
+	public Path getPathn() {
+		return path;
 	}
 	
 	public void changelinename() throws IOException {

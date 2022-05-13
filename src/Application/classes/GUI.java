@@ -24,7 +24,7 @@ public class GUI {
 	public GUI() throws IOException {
 		initialize();
 		Add_Image imagine = new Add_Image(frame, Add_Image, selectObjectVar, Export, Tag_Menu, combobox, Refresh, Help);
-		imagine.Load();
+		imagine.load();
 	}
 	
 	/**
@@ -44,22 +44,24 @@ public class GUI {
 		frame.getContentPane().add(Help);
 		
 		Refresh = new JButton("Refresh");
-		Refresh.setBounds(839, 121, 187, 41);
+		Refresh.setBounds(839, 265, 187, 41);
 		frame.getContentPane().add(Refresh);
-		Refresh.setEnabled(false);
+		//Refresh.setEnabled(false);
+		Refresh.setVisible(false);
 		
 		Add_Image = new JButton("Add image");
-		Add_Image.setBounds(839, 193, 187, 41);
+		Add_Image.setBounds(839, 121, 187, 41);
 		frame.getContentPane().add(Add_Image);
 		
 		Tag_Menu = new JButton("Tag menu");
-		Tag_Menu.setBounds(839, 265, 187, 41);
+		Tag_Menu.setBounds(839, 193, 187, 41);
 		frame.getContentPane().add(Tag_Menu);
 		
 		Export = new JButton("Export");
 		Export.setBounds(839, 337, 187, 41);
 		frame.getContentPane().add(Export);
-		Export.setEnabled(false);
+		//Export.setEnabled(false);
+		Export.setVisible(false);
 		
 	}
 

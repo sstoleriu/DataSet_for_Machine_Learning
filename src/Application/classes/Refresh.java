@@ -20,9 +20,6 @@ public class Refresh {
 	}
 	
 	public void load() {
-		Add_image.remessage();
-		refresh.removeMouseMotionListener(null);
-		refresh.setEnabled(true);
 		refresh.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {

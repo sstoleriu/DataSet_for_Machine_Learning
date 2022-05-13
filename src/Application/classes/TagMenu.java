@@ -8,11 +8,9 @@ import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.Vector;
 
@@ -39,6 +37,8 @@ public class TagMenu {
 	private ComboBox combobox;
 	private JFrame frame;
 	private static JComboBox<String> selectObjectVar;
+	private FileName fn;
+	private FileColor fc;
 	
 	public TagMenu(JButton TagMenu, ComboBox combobox, JFrame frame,JComboBox<String> selectObjectVar) {
 		this.TagMenu = TagMenu;
@@ -48,12 +48,12 @@ public class TagMenu {
 	}
 	
 	void initialize_tags() throws IOException{
-		//Initialization of TagMenuPanel
+		//Initialization of Tag menu
 		JButton editname;
 		JFrame newtagf;
 		JTextField colortag;
-		FileName fn = new FileName();
-		FileColor fc = new FileColor();
+		fn = new FileName();
+		fc = new FileColor();
 		names=fn.getlistname();
 		colors=fc.getlistcolor();
 		for(int i=0; i<names.size(); i++) {
@@ -84,13 +84,6 @@ public class TagMenu {
 		editname.setBounds(136, 66, 100, 44);
 		newtagf.getContentPane().add(editname);
 		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 11, 116, 154);
-		newtagf.getContentPane().add(scrollPane);
-		JList<String> list = new JList<String>(names);
-		scrollPane.setViewportView(list);
-		
-		
 		JButton editcolor = new JButton("Edit color");
 		editcolor.setBounds(136, 121, 100, 44);
 		newtagf.getContentPane().add(editcolor);
@@ -98,6 +91,12 @@ public class TagMenu {
 		JButton deltag = new JButton("Delete tag");
 		deltag.setBounds(136, 176, 100, 44);
 		newtagf.getContentPane().add(deltag);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 11, 116, 154);
+		newtagf.getContentPane().add(scrollPane);
+		JList<String> list = new JList<String>(names);
+		scrollPane.setViewportView(list);
 		
 		colortag = new JTextField();
 		colortag.setHorizontalAlignment(SwingConstants.CENTER);
@@ -107,21 +106,18 @@ public class TagMenu {
 		colortag.setColumns(10);
 		//MOUSE ACTION OF TAG MENU BUTTON
 		list.addMouseListener(new MouseAdapter() {
-			@Override
 			public void mouseClicked(MouseEvent arg0) {
 			int index = list.getSelectedIndex();
 			colortag.setBackground(colors.get(index));
 			}
 			});	
 		newtag.addMouseListener(new MouseAdapter() {
-			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				frame_addtag.setVisible(true);
 			}
 			});	
 		//MOUSE ACTION OF EDIT COLOR BUTTON
 		editcolor.addMouseListener(new MouseAdapter() {
-			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				try {
 					@SuppressWarnings("unused")
@@ -147,7 +143,6 @@ public class TagMenu {
 			});	
 		//MOUSE ACTION OF EDIT NAME BUTTON
 		editname.addMouseListener(new MouseAdapter() {
-			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				try {
 					@SuppressWarnings("unused")
@@ -179,7 +174,6 @@ public class TagMenu {
 			});
 		//MOUSE ACTION OF DELETE TAG BUTTON
 		deltag.addMouseListener(new MouseAdapter() {
-			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				try {
 					@SuppressWarnings("unused")
@@ -211,8 +205,6 @@ public class TagMenu {
 	void initialize_tagbtn() {
 		//Initialization of TagMenuButton
 		TagMenu.addActionListener(new ActionListener() {
-			
-			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(OK) {
 					frame_tagmenu.setVisible(false);
@@ -258,7 +250,6 @@ public class TagMenu {
 		addtag.getContentPane().add(cchoose);
 		
 		cchoose.addMouseListener(new MouseAdapter() {
-			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				Color colour=JColorChooser.showDialog(cchange,"Choose color", Color.white);
 				cchange.setBackground(colour);
@@ -266,7 +257,6 @@ public class TagMenu {
 			});	
 		//MOUSE ACTION OF ADD NEW TAG BUTTON
 		Add.addMouseListener(new MouseAdapter() {
-			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				String auxname = nchange.getText();
 				FileName fn = null;
@@ -277,8 +267,7 @@ public class TagMenu {
 				if(!"".equals(auxname)) {
 					try {
 						if(!fn.tagexist(auxname)) {
-							File name = new File("src/Application/classes/name_tags");
-							Path pathn = Paths.get(name.getAbsolutePath());
+							Path pathn = fn.getPathn();
 							try (BufferedWriter writer = Files.newBufferedWriter(pathn, StandardOpenOption.APPEND)) {
 							    writer.write(System.lineSeparator() + auxname);
 							    writer.close();
@@ -287,8 +276,7 @@ public class TagMenu {
 							}
 							Color colour = cchange.getBackground();
 							String auxcolor = System.lineSeparator() + colour.getRGB();
-							File color = new File("src/Application/classes/color_tags");
-							Path pathc = Paths.get(color.getAbsolutePath());
+							Path pathc = fc.getPathc();
 							try (BufferedWriter writer = Files.newBufferedWriter(pathc, StandardOpenOption.APPEND)) {
 							    writer.write(auxcolor);
 							    writer.close();

@@ -24,10 +24,6 @@ public class MouseClick implements MouseListener{
 	private Vector<String> names=new Vector<>();
 	private Vector<Color> colors=new Vector<>();
 	
-	public void setOptiune(String optiune) {
-		this.optiune = optiune;
-	}
-	
 	public MouseClick(Vector<Obiect> listSelectObject, Add_Image add_image, JComboBox<String> selectObjectVar, Vector<String> names, Vector<Color> colors) {
 		MouseClick.listOfObjects = listSelectObject;
 		this.add_image = add_image;
@@ -40,7 +36,6 @@ public class MouseClick implements MouseListener{
 	   if(this.drawing){
         	p2=e.getPoint();
         	this.drawing=false;
-
         	
         	try {
         		this.optiune = (String) selectObjectVar.getSelectedItem();
@@ -48,7 +43,7 @@ public class MouseClick implements MouseListener{
         		newTag.setPoint1(this.p1);
         		newTag.setPoint2(this.p2);
         		newTag.draw();
-        		MouseClick.listOfObjects.add(newTag);	
+        		MouseClick.listOfObjects.add(newTag);
         		
         	} catch (ArrayIndexOutOfBoundsException e1) {
 				JFrame mesaj = new JFrame();
@@ -62,8 +57,7 @@ public class MouseClick implements MouseListener{
         }
     }
    
-   public Point getPoint_P1(){
-	   
+   public Point getPoint_P1(){  
 	   return p1;
    }
    
