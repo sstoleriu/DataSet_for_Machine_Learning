@@ -13,7 +13,7 @@ import java.util.Vector;
 public class FileName {
 
 	private Vector<String> names = new Vector<>();
-	File name = new File("src/Application/resources/name_tags");
+	File name = new File("src/Application/resources/memory/name_tags");
 	Path path = Paths.get(name.getAbsolutePath());
 	
 	FileName() throws IOException{

@@ -10,35 +10,41 @@ import java.io.IOException;
 import java.util.NoSuchElementException;
 import java.util.Vector;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-
 import marvin.gui.MarvinImagePanel;
 import marvin.image.MarvinImage;
 import marvin.io.MarvinImageIO;
 
 public class Add_Image {
 	
-	private JButton Add_Image;
-	private JButton export;
-	private JButton tagmenu;
-	private JButton refresh;
-	private JButton help;
-	private static MarvinImagePanel imagePanel; 
+	private JButton Add_Image,
+					export,
+					tagmenu,
+					refresh,
+					help,
+					icons,
+					credits;
+	private JFrame frame;
+	private File file;
+	private static MarvinImagePanel imagePanel;
 	private static MarvinImage	image;  
 	private MarvinImage backupImage;
 	private MarvinImage rcImage;
-	private JFrame frame;
-	private File file;
 	private static JComboBox<String> selectObjectVar;
-	private Vector<String> names=new Vector<>();
-	private Vector<Color> colors=new Vector<>();
 	private ComboBox combobox;
+	private static Vector<String> names=new Vector<>();
+	private static Vector<Color> colors=new Vector<>();
+	private static boolean drawEnabled = false;
 	
-	public Add_Image(JFrame frame, JButton Add_Image, JComboBox<String> selectObject, JButton export, JButton tagmenu, ComboBox combobox, JButton refresh, JButton help) {
+	public Add_Image() {
+	}
+	
+	public Add_Image(JFrame frame, JButton Add_Image, JComboBox<String> selectObject, JButton export, JButton tagmenu, ComboBox combobox, JButton refresh, JButton help, JButton icons, JButton credits) {
 		this.frame = frame;
 		this.Add_Image = Add_Image;
 		Application.classes.Add_Image.selectObjectVar = selectObject;
@@ -47,28 +53,38 @@ public class Add_Image {
 		this.combobox = combobox;
 		this.refresh = refresh;
 		this.help = help;
+		this.icons = icons;
+		this.credits = credits;
 	}
 	
 	public void load() throws IOException {
-		FileBackground imageBackground = new FileBackground();
-		image = imageBackground.getBackground();
+		image = new FileGet().getBackground();
 		imagePanel = new MarvinImagePanel();
 		imagePanel.setBounds(10, 10, 800, 543);
-		imagePanel.setImage(image);
+		imagePanel.setOpaque(false);
 		frame.getContentPane().add(imagePanel);
-		TagMenu menuTag = new TagMenu(tagmenu,combobox,frame,selectObjectVar);
+		imagePanel.setImage(new FileGet().getBackground());
+		Add_Image add_imageTemp = this;
+		TagMenu menuTag = new TagMenu(tagmenu, combobox, frame, selectObjectVar);
+		Helper help = new Helper(this.help, credits);
+		ChangeIcons cIcons = new ChangeIcons(icons, add_imageTemp, menuTag, help);
 		menuTag.initialize_tags();
 		menuTag.initialize_tagbtn();
 		menuTag.initialize_menubuttons();
-		Help help = new Help(this.help);
 		help.load();
-		Add_Image add_imageTemp = this;
+		cIcons.load();
 		selectObjectVar = TagMenu.getSelectObjectVar();
+		selectObjectVar.setEnabled(false);
 		names = TagMenu.getVectorName();
 		colors = TagMenu.getVectorColor();
+		selectObject selectObject = new selectObject(frame, add_imageTemp, export, refresh);
 		Add_Image.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				try {
+					if(selectObject.listNotEmpty()) {
+						selectObject.listEmpty();
+					}
 					JFileChooser fileChooser = new JFileChooser();
 					int response = fileChooser.showOpenDialog(null);
 					if(response == JFileChooser.APPROVE_OPTION) {
@@ -79,14 +95,19 @@ public class Add_Image {
 				        scale(backupImage, image, 800, 543);
 				        rcImage=image.clone();
 				        imagePanel.setImage(image);
-				        selectObject selectObject = new selectObject(frame, add_imageTemp, export, refresh);
-						selectObject.createObjectAndDraw();
-						export.setVisible(true);
-						refresh.setVisible(true);
+				        imagePanel.setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2, Color.white));
+						export.setEnabled(true);
+						refresh.setEnabled(true);
+						selectObjectVar.setEnabled(true);
+						if(drawEnabled == false) {
+							moveDataSet(drawEnabled);
+							selectObject.createObjectAndDraw();
+							drawEnabled = true;
+						}
 					}
 				} catch (NoSuchElementException e1) {
 					JFrame mesaj = new JFrame();
-					JOptionPane.showMessageDialog(mesaj,"Please insert an image", "Warning", JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(mesaj,"Please insert an image", "Warning", JOptionPane.WARNING_MESSAGE, new FileGet().getIcon("warn.png"));
 					mesaj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				}
 			}
@@ -117,5 +138,22 @@ public class Add_Image {
 	}
 	public MarvinImage getrcImage() {
 		return rcImage;
+	}
+	
+	public void changeMainIcons(int cont) {
+		Add_Image.setIcon(new FileGet().getIcon(cont+"insert.png"));
+		export.setIcon(new FileGet().getIcon(cont+"export.png"));
+		tagmenu.setIcon(new FileGet().getIcon(cont+"tagmenu.png"));
+		refresh.setIcon(new FileGet().getIcon(cont+"refresh.png"));
+		help.setIcon(new FileGet().getIcon(cont+"help.png"));
+		icons.setIcon(new FileGet().getIcon(cont+"icons.png"));
+	}
+	
+	public void moveDataSet(boolean ok) {
+		MarvinImagePanel panel = new MarvinImagePanel();
+		panel.setBounds(865, 5, 64, 64);
+		panel.setImage(new FileGet().getMovedDataSet("moveDataSet.png"));
+		panel.setOpaque(false);
+		frame.getContentPane().add(panel);
 	}
 }

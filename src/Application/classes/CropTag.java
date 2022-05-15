@@ -3,7 +3,6 @@ package Application.classes;
 import java.awt.Color;
 import java.awt.Point;
 import java.awt.Rectangle;
-
 import Application.interfaces.Draw;
 import Application.interfaces.Obiect;
 import marvin.image.MarvinImage;

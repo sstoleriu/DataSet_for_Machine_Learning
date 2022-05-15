@@ -24,6 +24,9 @@ public class MouseClick implements MouseListener{
 	private Vector<String> names=new Vector<>();
 	private Vector<Color> colors=new Vector<>();
 	
+	public MouseClick() {
+	}
+	
 	public MouseClick(Vector<Obiect> listSelectObject, Add_Image add_image, JComboBox<String> selectObjectVar, Vector<String> names, Vector<Color> colors) {
 		MouseClick.listOfObjects = listSelectObject;
 		this.add_image = add_image;
@@ -47,7 +50,7 @@ public class MouseClick implements MouseListener{
         		
         	} catch (ArrayIndexOutOfBoundsException e1) {
 				JFrame mesaj = new JFrame();
-				JOptionPane.showMessageDialog(mesaj,"The selected tag was deleted, please choose a tag from the existing ones", "Warning", JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(mesaj,"The selected tag was deleted or renamed, please rechoose the tag", "Warning", JOptionPane.WARNING_MESSAGE, new FileGet().getIcon("warn.png"));
 				mesaj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			}	
         }
@@ -64,24 +67,27 @@ public class MouseClick implements MouseListener{
    public Point getPoint_P2(){
 	   return p2;
    }
+   
+   public void refresh() {
+	   p1 = new Point(0,0);
+	   p2 = new Point(0,0);
+   }
 
-	@Override
-	public void mouseEntered(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-	}
+@Override
+public void mouseClicked(MouseEvent e) {
+}
 
-	@Override
-	public void mouseExited(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-	}
+@Override
+public void mouseReleased(MouseEvent e) {
+}
 
-	@Override
-	public void mouseClicked(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-	}
+@Override
+public void mouseEntered(MouseEvent e) {
+}
 
-	@Override
-	public void mouseReleased(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-	}
+@Override
+public void mouseExited(MouseEvent e) {
+}
+
+
 }

@@ -12,6 +12,11 @@ public class Refresh {
 	private Add_Image Add_image;
 	private JButton refresh;
 	private Vector<Obiect> listOfObjects = new Vector<Obiect>();
+	private static ActionListener refreshAction;
+	private static boolean createdBooleanRefresh = false;
+	
+	Refresh(){
+	}
 	
 	public Refresh(JButton refresh, Vector<Obiect> listOfObjects, Add_Image Add_image) {
 		this.refresh = refresh;
@@ -20,14 +25,17 @@ public class Refresh {
 	}
 	
 	public void load() {
-		refresh.addActionListener(new ActionListener() {
-			@Override
+		refreshAction = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				listOfObjects.clear();
 				Add_image.refreshImage();
+				new MouseClick().refresh();
 			}
-		});
-		
+		};
+		if(createdBooleanRefresh == false) {
+			refresh.addActionListener(refreshAction);
+			createdBooleanRefresh = true;
+		}
 	}
 	
 }

@@ -14,7 +14,7 @@ import java.util.Vector;
 public class FileColor {
 	
 	private Vector<Color> colors = new Vector<Color>();
-	private File color = new File("src/Application/resources/color_tags");
+	private File color = new File("src/Application/resources/memory/color_tags");
 	private Path path = Paths.get(color.getAbsolutePath());
 	
 	FileColor() throws IOException{

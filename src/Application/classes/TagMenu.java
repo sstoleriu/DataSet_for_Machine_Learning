@@ -18,6 +18,7 @@ import javax.swing.JButton;
 import javax.swing.JColorChooser;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
@@ -27,15 +28,22 @@ import javax.swing.SwingUtilities;
 
 public class TagMenu {
 	
-	private JButton TagMenu;
+	private JButton TagMenu,
+					newtag,
+					editname,
+					editcolor,
+					deltag,
+					Add,
+					cchoose;
 	private static Vector<String> names=new Vector<>();
 	private static Vector<Color> colors=new Vector<>();
 	private Vector<Tag> tags=new Vector<>();
 	private boolean OK=false;
 	private JFrame frame_tagmenu;
 	private JFrame frame_addtag;
-	private ComboBox combobox;
 	private JFrame frame;
+	private ComboBox combobox;
+	private JTextField colortag;
 	private static JComboBox<String> selectObjectVar;
 	private FileName fn;
 	private FileColor fc;
@@ -49,9 +57,8 @@ public class TagMenu {
 	
 	void initialize_tags() throws IOException{
 		//Initialization of Tag menu
-		JButton editname;
-		JFrame newtagf;
-		JTextField colortag;
+		frame.setResizable(false);
+		
 		fn = new FileName();
 		fc = new FileColor();
 		names=fn.getlistname();
@@ -62,8 +69,10 @@ public class TagMenu {
 		
 		combobox.modComboBox(frame, names);
 		selectObjectVar = combobox.getcomboBox();
-		newtagf = new JFrame();
-		newtagf.setBounds(100, 100, 262, 276);
+		JFrame newtagf = new JFrame();
+		newtagf.setResizable(false);
+		newtagf.setContentPane(new JLabel(new FileGet().getIcon("tagmenu.png")));
+		newtagf.setBounds(100, 100, 293, 270);
 		newtagf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		newtagf.setTitle("Tag menu");
 		newtagf.addWindowListener(new WindowAdapter() { 
@@ -76,38 +85,44 @@ public class TagMenu {
 		newtagf.getContentPane().setLayout(null);
 		newtagf.setVisible(false);
 		
-		JButton newtag = new JButton("New tag");
-		newtag.setBounds(136, 11, 100, 44);
+		newtag = new JButton("New");
+		newtag.setFocusPainted(false);
+		newtag.setBounds(146, 11, 121, 44);
 		newtagf.getContentPane().add(newtag);
 		
-		editname = new JButton("Edit name");
-		editname.setBounds(136, 66, 100, 44);
+		editname = new JButton("Name");
+		editname.setFocusPainted(false);
+		editname.setBounds(146, 66, 121, 44);
 		newtagf.getContentPane().add(editname);
 		
-		JButton editcolor = new JButton("Edit color");
-		editcolor.setBounds(136, 121, 100, 44);
+		editcolor = new JButton("Color");
+		editcolor.setFocusPainted(false);
+		editcolor.setBounds(146, 121, 121, 44);
 		newtagf.getContentPane().add(editcolor);
 		
-		JButton deltag = new JButton("Delete tag");
-		deltag.setBounds(136, 176, 100, 44);
+		deltag = new JButton("Delete");
+		deltag.setFocusPainted(false);
+		deltag.setBounds(146, 176, 121, 44);
 		newtagf.getContentPane().add(deltag);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 11, 116, 154);
+		scrollPane.setBounds(10, 11, 126, 154);
 		newtagf.getContentPane().add(scrollPane);
 		JList<String> list = new JList<String>(names);
 		scrollPane.setViewportView(list);
 		
 		colortag = new JTextField();
+		colortag.setOpaque(false);
 		colortag.setHorizontalAlignment(SwingConstants.CENTER);
 		colortag.setEditable(false);
-		colortag.setBounds(10, 176, 116, 44);
+		colortag.setBounds(10, 176, 126, 44);
 		newtagf.getContentPane().add(colortag);
-		colortag.setColumns(10);
+		colortag.setColumns(1);
 		//MOUSE ACTION OF TAG MENU BUTTON
 		list.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
 			int index = list.getSelectedIndex();
+			colortag.setOpaque(true);
 			colortag.setBackground(colors.get(index));
 			}
 			});	
@@ -136,7 +151,7 @@ public class TagMenu {
 					}
 				} catch (Exception e) {
 					JFrame mesaj = new JFrame();
-					JOptionPane.showMessageDialog(mesaj,"Please select the tag you want to change its color", "Warning", JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(mesaj,"Please select the tag you want to change its color", "Warning", JOptionPane.WARNING_MESSAGE, new FileGet().getIcon("warn.png"));
 					mesaj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				}
 			}
@@ -167,7 +182,7 @@ public class TagMenu {
 					}
 				} catch (Exception e) {
 					JFrame mesaj = new JFrame();
-					JOptionPane.showMessageDialog(mesaj,"Please select the tag you want to rename", "Warning", JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(mesaj,"Please select the tag you want to rename", "Warning", JOptionPane.WARNING_MESSAGE, new FileGet().getIcon("warn.png"));
 					mesaj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				}
 			}
@@ -189,12 +204,12 @@ public class TagMenu {
 					}
 					else {
 						JFrame mesaj = new JFrame();
-						JOptionPane.showMessageDialog(mesaj,"The tag list should have at least one item in it. Do not remove the last tag", "Warning", JOptionPane.WARNING_MESSAGE);
+						JOptionPane.showMessageDialog(mesaj,"The tag list should have at least one item in it. Do not remove the last tag", "Warning", JOptionPane.WARNING_MESSAGE, new FileGet().getIcon("warn.png"));
 						mesaj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 					}
 				} catch (Exception e) {
 					JFrame mesaj = new JFrame();
-					JOptionPane.showMessageDialog(mesaj,"Please select the tag you want to delete", "Warning", JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(mesaj,"Please select the tag you want to delete", "Warning", JOptionPane.WARNING_MESSAGE, new FileGet().getIcon("warn.png"));
 					mesaj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				}
 			}
@@ -219,35 +234,38 @@ public class TagMenu {
 	}
 	
 	void initialize_menubuttons() {
-		JFrame addtag;
-		addtag = new JFrame();
-		addtag.setBounds(100, 100, 251, 125);
-		addtag.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		addtag.getContentPane().setLayout(null);
-		addtag.setTitle("New tag");
-		addtag.setVisible(false);
+		JFrame newmenu = new JFrame();
+		newmenu.setResizable(false);
+		newmenu.setBounds(100, 100, 301, 140);
+		newmenu.setContentPane(new JLabel(new FileGet().getIcon("newmenu.png")));
+		newmenu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		newmenu.getContentPane().setLayout(null);
+		newmenu.setTitle("New tag");
+		newmenu.setVisible(false);
 		
 		JTextField nchange = new JTextField();
 		nchange.setText("Insert name");
-		nchange.setBounds(10, 11, 120, 20);
-		addtag.getContentPane().add(nchange);
+		nchange.setBounds(10, 11, 128, 26);
+		newmenu.getContentPane().add(nchange);
 		nchange.setColumns(1);
 		
 		JTextField cchange = new JTextField();
 		cchange.setBackground(Color.CYAN);
 		cchange.setEditable(false);
 		cchange.setColumns(1);
-		cchange.setBounds(140, 11, 85, 20);
-		addtag.getContentPane().add(cchange);
+		cchange.setBounds(148, 11, 126, 26);
+		newmenu.getContentPane().add(cchange);
 		
-		JButton Add = new JButton("Add");
-		Add.setBounds(10, 42, 120, 33);
-		addtag.getContentPane().add(Add);
-		frame_addtag=addtag;
+		Add = new JButton("Add");
+		Add.setFocusPainted(false);
+		Add.setBounds(10, 48, 128, 42);
+		newmenu.getContentPane().add(Add);
+		frame_addtag=newmenu;
 		
-		JButton cchoose = new JButton("COLOR");
-		cchoose.setBounds(140, 42, 85, 33);
-		addtag.getContentPane().add(cchoose);
+		cchoose = new JButton("COLOR");
+		cchoose.setFocusPainted(false);
+		cchoose.setBounds(146, 48, 128, 42);
+		newmenu.getContentPane().add(cchoose);
 		
 		cchoose.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
@@ -286,13 +304,15 @@ public class TagMenu {
 							names.add(auxname);
 							colors.add(colour);
 							tags.add(new Tag(auxname,colour));
-							SwingUtilities.updateComponentTreeUI(frame_tagmenu);
-							
+							SwingUtilities.updateComponentTreeUI(frame_tagmenu);	
 							selectObjectVar = combobox.getcomboBox();
+							JFrame mesaj = new JFrame();
+					 		JOptionPane.showMessageDialog(mesaj,"Tag created","Info",JOptionPane.INFORMATION_MESSAGE, new FileGet().getIcon("done.png"));
+					 		mesaj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 						}
 						else {
 							JFrame mesaj = new JFrame();
-							JOptionPane.showMessageDialog(mesaj,"This name is already used by another tag", "Warning", JOptionPane.WARNING_MESSAGE);
+							JOptionPane.showMessageDialog(mesaj,"This name is already used by another tag", "Warning", JOptionPane.WARNING_MESSAGE, new FileGet().getIcon("warn.png"));
 							mesaj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 						}
 							
@@ -302,12 +322,21 @@ public class TagMenu {
 				}
 				else {
 				JFrame mesaj = new JFrame();
-				JOptionPane.showMessageDialog(mesaj,"This name is invalid", "Warning", JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(mesaj,"This name is invalid", "Warning", JOptionPane.WARNING_MESSAGE, new FileGet().getIcon("warn.png"));
 				mesaj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				}
 			}
 			});	
 		
+	}
+	
+	public void changeTagMenuIcons(int cont) {
+		newtag.setIcon(new FileGet().getIcon(cont+"add.png"));
+		Add.setIcon(new FileGet().getIcon(cont+"add.png"));
+		editcolor.setIcon(new FileGet().getIcon(cont+"color.png"));
+		cchoose.setIcon(new FileGet().getIcon(cont+"color.png"));
+		editname.setIcon(new FileGet().getIcon(cont+"name.png"));
+		deltag.setIcon(new FileGet().getIcon(cont+"delete.png"));
 	}
 	
 	public static JComboBox<String> getSelectObjectVar(){

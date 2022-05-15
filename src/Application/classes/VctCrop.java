@@ -12,7 +12,6 @@ public class VctCrop {
 		for(int i=0;i<list.size();i++)
 		{
 			vct.add(i,list.get(i).getName());
-			//vct.add(i,list.get(i).getClass().getSimpleName());
 		}
 	}
 	
