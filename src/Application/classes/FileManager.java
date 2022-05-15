@@ -11,14 +11,14 @@ import javax.swing.ImageIcon;
 import marvin.image.MarvinImage;
 import marvin.io.MarvinImageIO;
 
-public class FileGet {
+public class FileManager {
 	
 	private File file = new File("src/Application/resources/images/startDataSet.png");
 	private MarvinImage image = MarvinImageIO.loadImage(file.toString());
 	private String iconFirstPath = "src/Application/resources/images/";
 	private Icon icon;
 	
-	FileGet(){
+	FileManager(){
 	}
 	
 	public MarvinImage getBackground() {
@@ -41,4 +41,15 @@ public class FileGet {
 		Image image = ImageIO.read(icon);
 		return image;
 	}
+	
+	public boolean FileExist(String path) {
+		File file = new File(path);
+		if(file.exists()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	
 }

@@ -58,12 +58,12 @@ public class Add_Image {
 	}
 	
 	public void load() throws IOException {
-		image = new FileGet().getBackground();
+		image = new FileManager().getBackground();
 		imagePanel = new MarvinImagePanel();
 		imagePanel.setBounds(10, 10, 800, 543);
 		imagePanel.setOpaque(false);
 		frame.getContentPane().add(imagePanel);
-		imagePanel.setImage(new FileGet().getBackground());
+		imagePanel.setImage(new FileManager().getBackground());
 		Add_Image add_imageTemp = this;
 		TagMenu menuTag = new TagMenu(tagmenu, combobox, frame, selectObjectVar);
 		Helper help = new Helper(this.help, credits);
@@ -107,7 +107,7 @@ public class Add_Image {
 					}
 				} catch (NoSuchElementException e1) {
 					JFrame mesaj = new JFrame();
-					JOptionPane.showMessageDialog(mesaj,"Please insert an image", "Warning", JOptionPane.WARNING_MESSAGE, new FileGet().getIcon("warn.png"));
+					JOptionPane.showMessageDialog(mesaj,"Please insert an image", "Warning", JOptionPane.WARNING_MESSAGE, new FileManager().getIcon("warn.png"));
 					mesaj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				}
 			}
@@ -141,18 +141,18 @@ public class Add_Image {
 	}
 	
 	public void changeMainIcons(int cont) {
-		Add_Image.setIcon(new FileGet().getIcon(cont+"insert.png"));
-		export.setIcon(new FileGet().getIcon(cont+"export.png"));
-		tagmenu.setIcon(new FileGet().getIcon(cont+"tagmenu.png"));
-		refresh.setIcon(new FileGet().getIcon(cont+"refresh.png"));
-		help.setIcon(new FileGet().getIcon(cont+"help.png"));
-		icons.setIcon(new FileGet().getIcon(cont+"icons.png"));
+		Add_Image.setIcon(new FileManager().getIcon(cont+"insert.png"));
+		export.setIcon(new FileManager().getIcon(cont+"export.png"));
+		tagmenu.setIcon(new FileManager().getIcon(cont+"tagmenu.png"));
+		refresh.setIcon(new FileManager().getIcon(cont+"refresh.png"));
+		help.setIcon(new FileManager().getIcon(cont+"help.png"));
+		icons.setIcon(new FileManager().getIcon(cont+"icons.png"));
 	}
 	
 	public void moveDataSet(boolean ok) {
 		MarvinImagePanel panel = new MarvinImagePanel();
 		panel.setBounds(865, 5, 64, 64);
-		panel.setImage(new FileGet().getMovedDataSet("moveDataSet.png"));
+		panel.setImage(new FileManager().getMovedDataSet("moveDataSet.png"));
 		panel.setOpaque(false);
 		frame.getContentPane().add(panel);
 	}

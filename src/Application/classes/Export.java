@@ -40,7 +40,7 @@ public class Export{
 			public void actionPerformed(ActionEvent e) {
 				if(listOfObjects.isEmpty()) {
 					JFrame mesaj = new JFrame();
-					JOptionPane.showMessageDialog(mesaj,"Please, select objects to export", "Warning", JOptionPane.WARNING_MESSAGE, new FileGet().getIcon("warn.png"));
+					JOptionPane.showMessageDialog(mesaj,"Please, select objects to export", "Warning", JOptionPane.WARNING_MESSAGE, new FileManager().getIcon("warn.png"));
 					mesaj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				}
 				else {
@@ -57,8 +57,9 @@ public class Export{
 					 	Integer contorvct[]=vct2.getContor_VctFreq();
 					 	Integer aux[]=Arrays.copyOf(contorvct, contorvct.length);
 					 	int conti;
-						 for(int i=0;i<allvct.size();i++){
-						 	for(int j=0;j<namevct.length;j++){
+					 	boolean OK = false;
+						 for(int i=0;i<allvct.size();i++){	
+						 	for(int j=0;j<namevct.length;j++){	 		
 						 		if(allvct.get(i).equals(namevct[j])){
 						 			java.awt.Rectangle rect=listOfObjects.get(i).getReact();
 						 			try {
@@ -66,11 +67,26 @@ public class Export{
 									} catch (IllegalArgumentException e1) {
 										IAE = true;
 									}
-						 			
 						 			if(IAE == false) {
-						 				conti=contorvct[j]-aux[j];
-							 			aux[j]=aux[j]-1;
-						 				MarvinImageIO.saveImage(imageOut, file.getAbsolutePath()+'/'+allvct.get(i)+" ("+conti+").jpg");
+						 				String path = file.getAbsolutePath()+'/'+allvct.get(i)+".jpg";
+						 				if(new FileManager().FileExist(path) == false) {
+						 					MarvinImageIO.saveImage(imageOut, path);
+						 					aux[j] = aux[j]-1;
+						 					OK = true;
+						 				} else {
+						 					if(OK) {
+						 						conti = contorvct[j]-aux[j];
+						 					} else {
+						 						conti = contorvct[j]-aux[j]+1;
+						 					}		
+						 					path = file.getAbsolutePath()+'/'+allvct.get(i)+" ("+conti+").jpg";
+						 					while(new FileManager().FileExist(path)) {
+						 						conti++;
+						 						path = file.getAbsolutePath()+'/'+allvct.get(i)+" ("+conti+").jpg";
+						 					}
+						 					MarvinImageIO.saveImage(imageOut, path);
+						 					aux[j] = aux[j]-1;
+						 				}					 				
 						 			}
 						 			IAE = false;
 						 		}
@@ -78,7 +94,7 @@ public class Export{
 						 }
 						 	if(allvct.size()!=0){
 						 		JFrame mesaj = new JFrame();
-						 		JOptionPane.showMessageDialog(mesaj,"Export done!","Info",JOptionPane.INFORMATION_MESSAGE, new FileGet().getIcon("done.png"));
+						 		JOptionPane.showMessageDialog(mesaj,"Export done!","Info",JOptionPane.INFORMATION_MESSAGE, new FileManager().getIcon("done.png"));
 						 		mesaj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 						 	}
 						}

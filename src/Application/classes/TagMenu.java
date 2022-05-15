@@ -71,7 +71,7 @@ public class TagMenu {
 		selectObjectVar = combobox.getcomboBox();
 		JFrame newtagf = new JFrame();
 		newtagf.setResizable(false);
-		newtagf.setContentPane(new JLabel(new FileGet().getIcon("tagmenu.png")));
+		newtagf.setContentPane(new JLabel(new FileManager().getIcon("tagmenu.png")));
 		newtagf.setBounds(100, 100, 293, 270);
 		newtagf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		newtagf.setTitle("Tag menu");
@@ -151,7 +151,7 @@ public class TagMenu {
 					}
 				} catch (Exception e) {
 					JFrame mesaj = new JFrame();
-					JOptionPane.showMessageDialog(mesaj,"Please select the tag you want to change its color", "Warning", JOptionPane.WARNING_MESSAGE, new FileGet().getIcon("warn.png"));
+					JOptionPane.showMessageDialog(mesaj,"Please select the tag you want to change its color", "Warning", JOptionPane.WARNING_MESSAGE, new FileManager().getIcon("warn.png"));
 					mesaj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				}
 			}
@@ -182,7 +182,7 @@ public class TagMenu {
 					}
 				} catch (Exception e) {
 					JFrame mesaj = new JFrame();
-					JOptionPane.showMessageDialog(mesaj,"Please select the tag you want to rename", "Warning", JOptionPane.WARNING_MESSAGE, new FileGet().getIcon("warn.png"));
+					JOptionPane.showMessageDialog(mesaj,"Please select the tag you want to rename", "Warning", JOptionPane.WARNING_MESSAGE, new FileManager().getIcon("warn.png"));
 					mesaj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				}
 			}
@@ -204,12 +204,12 @@ public class TagMenu {
 					}
 					else {
 						JFrame mesaj = new JFrame();
-						JOptionPane.showMessageDialog(mesaj,"The tag list should have at least one item in it. Do not remove the last tag", "Warning", JOptionPane.WARNING_MESSAGE, new FileGet().getIcon("warn.png"));
+						JOptionPane.showMessageDialog(mesaj,"The tag list should have at least one item in it. Do not remove the last tag", "Warning", JOptionPane.WARNING_MESSAGE, new FileManager().getIcon("warn.png"));
 						mesaj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 					}
 				} catch (Exception e) {
 					JFrame mesaj = new JFrame();
-					JOptionPane.showMessageDialog(mesaj,"Please select the tag you want to delete", "Warning", JOptionPane.WARNING_MESSAGE, new FileGet().getIcon("warn.png"));
+					JOptionPane.showMessageDialog(mesaj,"Please select the tag you want to delete", "Warning", JOptionPane.WARNING_MESSAGE, new FileManager().getIcon("warn.png"));
 					mesaj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				}
 			}
@@ -237,7 +237,7 @@ public class TagMenu {
 		JFrame newmenu = new JFrame();
 		newmenu.setResizable(false);
 		newmenu.setBounds(100, 100, 301, 140);
-		newmenu.setContentPane(new JLabel(new FileGet().getIcon("newmenu.png")));
+		newmenu.setContentPane(new JLabel(new FileManager().getIcon("newmenu.png")));
 		newmenu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		newmenu.getContentPane().setLayout(null);
 		newmenu.setTitle("New tag");
@@ -307,12 +307,12 @@ public class TagMenu {
 							SwingUtilities.updateComponentTreeUI(frame_tagmenu);	
 							selectObjectVar = combobox.getcomboBox();
 							JFrame mesaj = new JFrame();
-					 		JOptionPane.showMessageDialog(mesaj,"Tag created","Info",JOptionPane.INFORMATION_MESSAGE, new FileGet().getIcon("done.png"));
+					 		JOptionPane.showMessageDialog(mesaj,"Tag created","Info",JOptionPane.INFORMATION_MESSAGE, new FileManager().getIcon("done.png"));
 					 		mesaj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 						}
 						else {
 							JFrame mesaj = new JFrame();
-							JOptionPane.showMessageDialog(mesaj,"This name is already used by another tag", "Warning", JOptionPane.WARNING_MESSAGE, new FileGet().getIcon("warn.png"));
+							JOptionPane.showMessageDialog(mesaj,"This name is already used by another tag", "Warning", JOptionPane.WARNING_MESSAGE, new FileManager().getIcon("warn.png"));
 							mesaj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 						}
 							
@@ -322,7 +322,7 @@ public class TagMenu {
 				}
 				else {
 				JFrame mesaj = new JFrame();
-				JOptionPane.showMessageDialog(mesaj,"This name is invalid", "Warning", JOptionPane.WARNING_MESSAGE, new FileGet().getIcon("warn.png"));
+				JOptionPane.showMessageDialog(mesaj,"This name is invalid", "Warning", JOptionPane.WARNING_MESSAGE, new FileManager().getIcon("warn.png"));
 				mesaj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				}
 			}
@@ -331,12 +331,12 @@ public class TagMenu {
 	}
 	
 	public void changeTagMenuIcons(int cont) {
-		newtag.setIcon(new FileGet().getIcon(cont+"add.png"));
-		Add.setIcon(new FileGet().getIcon(cont+"add.png"));
-		editcolor.setIcon(new FileGet().getIcon(cont+"color.png"));
-		cchoose.setIcon(new FileGet().getIcon(cont+"color.png"));
-		editname.setIcon(new FileGet().getIcon(cont+"name.png"));
-		deltag.setIcon(new FileGet().getIcon(cont+"delete.png"));
+		newtag.setIcon(new FileManager().getIcon(cont+"add.png"));
+		Add.setIcon(new FileManager().getIcon(cont+"add.png"));
+		editcolor.setIcon(new FileManager().getIcon(cont+"color.png"));
+		cchoose.setIcon(new FileManager().getIcon(cont+"color.png"));
+		editname.setIcon(new FileManager().getIcon(cont+"name.png"));
+		deltag.setIcon(new FileManager().getIcon(cont+"delete.png"));
 	}
 	
 	public static JComboBox<String> getSelectObjectVar(){

@@ -41,12 +41,12 @@ public class GUI {
 
 		frame = new JFrame();
 		frame.setResizable(false);
-		frame.setContentPane(new JLabel(new FileGet().getIcon("mainmenu.png")));
+		frame.setContentPane(new JLabel(new FileManager().getIcon("mainmenu.png")));
 		frame.setBounds(100, 100, 1050, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setTitle("DataSet");
 		frame.getContentPane().setLayout(null);
-		frame.setIconImage(new FileGet().getImage("iconDataSet.png"));
+		frame.setIconImage(new FileManager().getImage("iconDataSet.png"));
 		
 		Help = new JButton("Helper");
 		Help.setBounds(839, 49, 187, 41);

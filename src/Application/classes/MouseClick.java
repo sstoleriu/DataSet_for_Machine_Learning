@@ -50,7 +50,7 @@ public class MouseClick implements MouseListener{
         		
         	} catch (ArrayIndexOutOfBoundsException e1) {
 				JFrame mesaj = new JFrame();
-				JOptionPane.showMessageDialog(mesaj,"The selected tag was deleted or renamed, please rechoose the tag", "Warning", JOptionPane.WARNING_MESSAGE, new FileGet().getIcon("warn.png"));
+				JOptionPane.showMessageDialog(mesaj,"The selected tag was deleted or renamed, please rechoose the tag", "Warning", JOptionPane.WARNING_MESSAGE, new FileManager().getIcon("warn.png"));
 				mesaj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			}	
         }
