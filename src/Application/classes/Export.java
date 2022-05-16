@@ -50,6 +50,7 @@ public class Export{
 					int response = fileChooser.showOpenDialog(null);
 					File file = fileChooser.getSelectedFile();
 					if (response == JFileChooser.APPROVE_OPTION) {
+						System.out.println(fileChooser.getSelectedFile());
 						VctCrop vct1=new VctCrop(listOfObjects);
 					 	Vector<String> allvct=vct1.getvct();
 					 	VctFreq vct2=new VctFreq(allvct);
