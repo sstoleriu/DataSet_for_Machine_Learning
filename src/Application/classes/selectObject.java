@@ -31,10 +31,17 @@ public class selectObject {
 		colors = Add_ImageTemp.getColors();
 	}
 
+	public JFrame getFrame() {
+		return frame;
+	}
+
+	public JComboBox<String> getSelectObject() {
+		return selectObject;
+	}
+
 	public void createObjectAndDraw() {
 		MouseClick mouseClick = new MouseClick(listOfObjects, Add_ImageTemp, selectObject, names, colors);
-		Add_Image.getImagePanel().addMouseListener(mouseClick);
-		
+		Add_Image.geImagePanel().addMouseListener(mouseClick);
 		Export exportImage = new Export(frame, export, Add_ImageTemp, selectObjectTemp);
 		exportImage.load();
 		Refresh refreshImage = new Refresh(refresh, listOfObjects, Add_ImageTemp);

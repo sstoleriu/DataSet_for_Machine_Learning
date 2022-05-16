@@ -23,6 +23,7 @@ public class ChangeIcons {
 		addimgtemp.changeMainIcons(cont);
 		tagmenutemp.changeTagMenuIcons(cont);
 		helptemp.changeHelpIcons(cont);
+		
 		icons.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cont++;

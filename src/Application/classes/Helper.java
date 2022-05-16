@@ -5,6 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.IOException;
+
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JEditorPane;
@@ -30,27 +32,33 @@ public class Helper {
 					btnWarning,
 					btnCredits;
 	private boolean OK=false;
+	private int X,
+				Y;
 	
-	Helper(JButton help, JButton credits){
+	Helper(JButton help, JButton credits, int X, int Y){
 		this.help = help;
 		btnCredits = credits;
+		this.X = X;
+		this.Y = Y;
 	}
 	
-	public void load() {
+	public void load() throws IOException {
 		//Help frame//
-		
 		JFrame frame = new JFrame();
 		frame.setContentPane(new JLabel(new FileManager().getIcon("helpmenu.png")));
 		frame.setResizable(false);
 		frame.setBounds(100, 100, 400, 601);
+		frame.setLocation(X,Y);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.setTitle("Helper");
+		frame.setIconImage(new FileManager().getImage("iconDataSet.png"));
 		frame.getContentPane().setLayout(null);
 		frame.setVisible(false);
 		frame.addWindowListener(new WindowAdapter() { 
 	        @Override
 	        public void windowClosing(WindowEvent e) { 
 	                OK=false;
+	                frame.setLocation(X,Y);
 	        }
 	    });
 		//"font-family:'Comic Sans MS'

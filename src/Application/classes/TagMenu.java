@@ -13,7 +13,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.util.Vector;
-
 import javax.swing.JButton;
 import javax.swing.JColorChooser;
 import javax.swing.JComboBox;
@@ -37,22 +36,27 @@ public class TagMenu {
 					cchoose;
 	private static Vector<String> names=new Vector<>();
 	private static Vector<Color> colors=new Vector<>();
-	private Vector<Tag> tags=new Vector<>();
-	private boolean OK=false;
-	private JFrame frame_tagmenu;
-	private JFrame frame_addtag;
+	private Vector<Tag> tags = new Vector<>();
+	private boolean OKtagm = false;
+	private boolean OKaddt = false;
+	private static JFrame frame_tagmenu;
+	private static JFrame frame_addtag;
 	private JFrame frame;
 	private ComboBox combobox;
 	private JTextField colortag;
 	private static JComboBox<String> selectObjectVar;
 	private FileName fn;
 	private FileColor fc;
+	private static int X;
+	private static int Y;
 	
-	public TagMenu(JButton TagMenu, ComboBox combobox, JFrame frame,JComboBox<String> selectObjectVar) {
+	public TagMenu(JButton TagMenu, ComboBox combobox, JFrame frame,JComboBox<String> selectObjectVar, int X, int Y) {
 		this.TagMenu = TagMenu;
 		this.combobox = combobox;
 		this.frame = frame;
 		Application.classes.TagMenu.selectObjectVar = selectObjectVar;
+		Application.classes.TagMenu.X = X;
+		Application.classes.TagMenu.Y = Y;
 	}
 	
 	void initialize_tags() throws IOException{
@@ -72,13 +76,13 @@ public class TagMenu {
 		JFrame newtagf = new JFrame();
 		newtagf.setResizable(false);
 		newtagf.setContentPane(new JLabel(new FileManager().getIcon("tagmenu.png")));
-		newtagf.setBounds(100, 100, 293, 270);
+		newtagf.setBounds(100, 100, 293, 270);;
 		newtagf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		newtagf.setTitle("Tag menu");
 		newtagf.addWindowListener(new WindowAdapter() { 
 	        @Override
 	        public void windowClosing(WindowEvent e) { 
-	                OK=false;
+	                OKtagm = false;
 	        }
 	    });
 		
@@ -126,9 +130,17 @@ public class TagMenu {
 			colortag.setBackground(colors.get(index));
 			}
 			});	
+		
 		newtag.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
-				frame_addtag.setVisible(true);
+				if(OKaddt) {	
+					frame_addtag.setVisible(false);
+					OKaddt = false;
+				}
+				else {
+					frame_addtag.setVisible(true);
+					OKaddt = true;
+				}
 			}
 			});	
 		//MOUSE ACTION OF EDIT COLOR BUTTON
@@ -215,33 +227,45 @@ public class TagMenu {
 			}
 			});
 		frame_tagmenu=newtagf;
+		frame_tagmenu.setIconImage(new FileManager().getImage("iconDataSet.png"));
+		frame_tagmenu.setLocation(X - frame_tagmenu.getWidth(), Y + Y/2 + 25);
 		}
 	
 	void initialize_tagbtn() {
 		//Initialization of TagMenuButton
 		TagMenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(OK) {
+				if(OKtagm ) {
 					frame_tagmenu.setVisible(false);
-					OK=false;
+					OKtagm =false;
+					frame_tagmenu.setLocation(X - frame_tagmenu.getWidth(), Y + Y/2 + 25);
 				}
 				else {
 					frame_tagmenu.setVisible(true);
-					OK=true;
+					OKtagm =true;
 				}
 			}
 		});
 	}
 	
-	void initialize_menubuttons() {
+	void initialize_menubuttons() throws IOException {
 		JFrame newmenu = new JFrame();
 		newmenu.setResizable(false);
 		newmenu.setBounds(100, 100, 301, 140);
 		newmenu.setContentPane(new JLabel(new FileManager().getIcon("newmenu.png")));
 		newmenu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		newmenu.getContentPane().setLayout(null);
+		newmenu.setLocationRelativeTo(null);
+		newmenu.setIconImage(new FileManager().getImage("iconDataSet.png"));
 		newmenu.setTitle("New tag");
+		newmenu.setLocation(X - frame_tagmenu.getWidth() - 4, Y);
 		newmenu.setVisible(false);
+		newmenu.addWindowListener(new WindowAdapter() { 
+	        @Override
+	        public void windowClosing(WindowEvent e) { 
+	                OKaddt = false;
+	        }
+	    });
 		
 		JTextField nchange = new JTextField();
 		nchange.setText("Insert name");

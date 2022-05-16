@@ -45,6 +45,7 @@ public class GUI {
 		frame.setBounds(100, 100, 1050, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setTitle("DataSet");
+		frame.setLocationRelativeTo(null);
 		frame.getContentPane().setLayout(null);
 		frame.setIconImage(new FileManager().getImage("iconDataSet.png"));
 		

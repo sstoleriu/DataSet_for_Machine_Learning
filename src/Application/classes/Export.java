@@ -47,10 +47,9 @@ public class Export{
 					MarvinImage imageOut = new MarvinImage();
 					JFileChooser fileChooser = new JFileChooser();
 					fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-					int response = fileChooser.showOpenDialog(null);
+					int response = fileChooser.showOpenDialog(Add_imageTemp.getFrame());
 					File file = fileChooser.getSelectedFile();
 					if (response == JFileChooser.APPROVE_OPTION) {
-						System.out.println(fileChooser.getSelectedFile());
 						VctCrop vct1=new VctCrop(listOfObjects);
 					 	Vector<String> allvct=vct1.getvct();
 					 	VctFreq vct2=new VctFreq(allvct);

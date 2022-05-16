@@ -1,11 +1,8 @@
 package Application.classes;
 
 import java.awt.Color;
-import java.awt.Image;
 import java.awt.Point;
 import java.awt.Rectangle;
-import java.awt.image.BufferedImage;
-
 import Application.interfaces.Draw;
 import Application.interfaces.Obiect;
 import marvin.image.MarvinImage;
@@ -53,12 +50,8 @@ public class CropTag implements Obiect, Draw{
 			this.rect = new Rectangle(p1);
 			this.rect.add(p2);
 			imageIn.drawRect(rect.x, rect.y, rect.width, rect.height, color);
-			Add_Image.getImagePanel().setImage(imageIn);
+			Add_Image.geImagePanel().setImage(imageIn);
 		}
-	}
-	
-	public void drawRect() {
-		Image imageIn2 = Add_Image.getImage2();
 	}
 	
 	public Rectangle getReact() {
