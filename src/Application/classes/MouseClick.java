@@ -15,15 +15,31 @@ public class MouseClick implements MouseListener{
 	private String optiune;
 	private Add_Image add_image;
 	
+	/**
+	 * Metoda de tip setter pentru setarea optiunii
+	 * 	  -(Autobuz/Bicicleta/Cladire/Indicator/Masina/Motocicleta/Semafor/Pieton);
+	 * @param optiune Optiunea selectata
+	 */
 	public void setOptiune(String optiune) {
 		this.optiune = optiune;
 	}
 	
+	/**
+	 * Constructor de initializare cu parametri pentru clasa MoseClick
+	 *  - initializeaza lista de obiecte si imaginea adaugata
+	 * @param listSlecObject Vectorul cu obiecte selectate
+	 * @param add_image Butonul de adaugare imagini
+	 */
 	public MouseClick(Vector<Obiect> listSlecObject, Add_Image add_image) {
 		MouseClick.listOfObjects = listSlecObject;
 		this.add_image = add_image;
 	}
 	
+	/** In functie de optiunea selectata, aceasta metoda este folosita pentru a crea un obiect de tipul clasei alese
+	 *  pentru a prelua coordonatele celor doua puncte, pentru a desena dreptunghiul avand punctele
+	 *  si pentru a adauga obiectul de tipul clasei alese intr-o lista.
+	 * In cazul in care obiectul nu face parte din niciuna dintre clasele afisate o exceptie va returna mesajul "Unexpected value".
+	 */
    public void mousePressed(MouseEvent e) {
         if(this.drawing){
         	p2=e.getPoint();
@@ -109,11 +125,19 @@ public class MouseClick implements MouseListener{
         }
     }
    
+   /**Getter de tip Point pentru returnarea primului punct folosit ulterior la crearea chenarului
+    * 
+    * @return p1 Primul punct selectat cu mouse-ul
+    */
    public Point getPoint_P1(){
 	   
 	   return p1;
    }
-   
+    
+   /**
+    * Getter de tip Point pentru returnarea celui de-al doilea punct folosit ulterior la crearea chenarului
+    * @return p2 Al doilea punct selectat cu mouse-ul
+    */
    public Point getPoint_P2(){
 	   return p2;
    }

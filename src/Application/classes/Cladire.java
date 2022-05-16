@@ -15,20 +15,36 @@ public class Cladire implements Obiect, Draw{
 	public Point p2;
 	private Rectangle rect;
     
+	/**
+	 * Constructor de initializare cu parametri pentru clasa Cladire
+	 *  *  - Initializeaza imaginea adaugata si culoarea specifica pentru chenar(roz)
+	 * @param Add_image Obiect de tipul clasei Add_Image
+	 */
     public Cladire(Add_Image Add_image){
     	this.Add_image = Add_image;
     	this.culoare=Color.PINK;
     }
     
+    
 	@Override
+	/**
+	 * Getter de tip Color pentru returnarea culorii
+	 */
 	public Color getCuloare() {
 		return this.culoare;
 	}
 	
+	/**
+	 * Getter de tip Add_Image pentru preluarea imaginii adaugate
+	 * @return Add_image Imagine adaugata
+	 */
 	public static Add_Image getAddImage(){
 		return Add_image;
 	}
 	
+	/**
+	 * Metoda pentru desenarea dreptunghiului - Preluare coordonate punct si desenare
+	 */
 	public void draw() {
 		if (this.p1.x == 0 || this.p1.y == 0 || this.p2.x == 0 || this.p2.y == 0) {
 			System.out.println("\n Punctele nu au o valoare");
@@ -41,16 +57,26 @@ public class Cladire implements Obiect, Draw{
 		}
 	}
 	
+	/**
+	 * Getter pentru returnarea dreptunghiului
+	 */
 	public Rectangle getReact() {
 		return this.rect;
 	}
 
+	
 	@Override
+	/**
+	 * Setter pentru setarea primului punct
+	 */
 	public void setPoint1(Point p) {
 		this.p1 = p;
 	}
 
 	@Override
+	/**
+	 * Setter pentru setarea celui de-al doilea punct
+	 */
 	public void setPoint2(Point p) {
 		this.p2 = p;
 	}

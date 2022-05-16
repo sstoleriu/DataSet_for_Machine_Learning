@@ -10,12 +10,15 @@ import Application.classes.GUI;
 public class App {
 
 	/**
-	 * Launch the application.
+	 * Lansarea aplicatiei, crearea unei GUI si setarea vizibila a frame-ului
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					/**
+					 * Creare GUI
+					 */
 					GUI window = new GUI();
 					window.getFrame().setVisible(true);
 				} catch (Exception e) {

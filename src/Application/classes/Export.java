@@ -22,18 +22,36 @@ public class Export{
 	private Vector<Obiect> listOfObjects;
 	private MarvinImage cropImage;
 	
-	public Export(JFrame frame,JButton Export, Add_Image Add_image, Vector<Obiect> listOfObjects, MarvinImage cropImage){
+	/**
+	 * Constructor de initializare cu parametri pentru clasa Export
+	 * @param Export Butonul de export
+	 * @param Add_image Imaginea adaugata
+	 * @param listOfObjects Lista de obiecte care contine obiectele create prin selectarea optiunii din DropBox
+	 *        Aceasta lista include pentru fiecare element:
+	 *        culoarea, imaginea adaugata, punctul initial, punctul final si chenarul(dreptunghiul)
+	 * @param cropImage Imaginea decupata
+	 */
+	public Export(JButton Export, Add_Image Add_image, Vector<Obiect> listOfObjects, MarvinImage cropImage){
 		Application.classes.Export.Add_image = Add_image;
 		this.Export=Export;
 		this.listOfObjects = listOfObjects;
 		this.cropImage=cropImage;
 	}
 
+	/**
+	 * Getter de tip Add_Image pentru preluarea imaginii adaugate
+	 * @return Add_image Imagine adaugata
+	 */
 	public static Add_Image getAddImage(){
 		return Add_image;
 	}
 	
-	
+	/**
+	 * Metoda pentru incarcarea exportarii de imagini decupate
+	 *  cu posibilitatea de alegere a folderului in care vor fi salvate imaginile decupate,
+	 *  cu redenumirea imaginilor in functie de numele tipului de obiect ales
+	 *  si vector cu indecsi pentru redenumirea imaginilor decupate in ordine 
+	 */
 	public void Load2() {		
 		Export.addActionListener(new ActionListener() {
 

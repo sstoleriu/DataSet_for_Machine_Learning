@@ -1,7 +1,7 @@
 package Application.interfaces;
 /**
- *  IMPLEMENTOR CLASS (?)
- * 		=> DRAW
+ *  INTERFACE 
+ * 		- DRAW
  */
 public interface Draw {
 	

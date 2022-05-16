@@ -5,8 +5,8 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.util.Vector;
 /**
- *  IMPLEMENTOR CLASS (?)
- * 		=> Obiect
+ *	INTERFACE 
+ * 		- Obiect
  */
 public interface Obiect {
     public static final Color Culoare = null;

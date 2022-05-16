@@ -15,6 +15,11 @@ public class Bicicleta implements Obiect, Draw{
 	public Point p2;
 	private Rectangle rect;
     
+	/**
+	 * Constructor de initializare cu parametri pentru clasa Bicicleta
+	 *  - Initializeaza imaginea adaugata si culoarea specifica pentru chenar(albastru)
+	 * @param Add_image Obiect de tipul clasei Add_Image
+	 */
     public Bicicleta(Add_Image Add_image){
     	this.Add_image = Add_image;
     	this.culoare=Color.BLUE;
@@ -38,7 +43,7 @@ public class Bicicleta implements Obiect, Draw{
 	}
 	
 	/**
-	 * Metoda de desenare a chenarului
+	 * Metoda de desenare a chenarului- Preluare coordonate puncte si desenare
 	 */
 	public void draw() {
 		if (this.p1.x == 0 || this.p1.y == 0 || this.p2.x == 0 || this.p2.y == 0) {
@@ -53,18 +58,24 @@ public class Bicicleta implements Obiect, Draw{
 	}
 	
 	/**
-	 * 
+	 * Getter pentru returnarea dreptunghiului
 	 */
 	public Rectangle getReact() {
 		return this.rect;
 	}
 
 	@Override
+	/**
+	 * Setter pentru setarea primului punct
+	 */
 	public void setPoint1(Point p) {
 		this.p1 = p;
 	}
 
 	@Override
+	/**
+	 * Setter pentru setarea celui de-al doilea punct
+	 */
 	public void setPoint2(Point p) {
 		this.p2 = p;
 	}

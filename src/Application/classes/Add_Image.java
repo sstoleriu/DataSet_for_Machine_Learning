@@ -57,7 +57,7 @@ public class Add_Image {
 	public static MarvinImage getImage() {
 		return image;
 	}
-	// geImagePanel(?)
+	
 	/**
 	 * Getter de tip MarvinImagePanel pentru returnarea imagePanel
 	 * @return imagePanel Panou de imagine

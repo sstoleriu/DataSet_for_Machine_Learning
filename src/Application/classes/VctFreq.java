@@ -9,7 +9,11 @@ public class VctFreq {
 	private Integer contor[];
 	Map<String, Integer> freqMap=new HashMap<>();
 	
-	VctFreq(Vector<String> allvct){
+	/**
+	 * Constructor de initializare cu parametri
+	 * @param allvct Vector care contine numele obiectului si indexul(contorul)
+	 */
+	public VctFreq(Vector<String> allvct){
 		for(int i=0;i<allvct.size();i++)
 		{
 			if(freqMap.containsKey(allvct.get(i))) {
@@ -23,10 +27,20 @@ public class VctFreq {
 		contor=freqMap.values().toArray(new Integer[0]);
 	}
 	
+	/**
+	 * Getter pentru returnarea numelui obiectelor
+	 *  - va fi utilizat la redenumirea pozelor decupate si exportate
+	 * @return name Numele obiectelor care se pot selecta
+	 */
 	public String[] getName_VctFreq() {
 		return name;
 	}
 	
+	/**
+	 * Getter pentru returnarea contorului
+	 *  - va fi utilizat pentru adaugarea indecsilor in redenumirea pozelor in ordinea selectarii lor
+	 * @return contor Indexul corespunzator ordinii selectarii
+	 */
 	public Integer[] getContor_VctFreq() {
 		return contor;
 	}
