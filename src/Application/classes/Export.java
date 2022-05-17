@@ -1,50 +1,52 @@
 package Application.classes;
 
+import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.awt.image.RasterFormatException;
 import java.io.File;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Vector;
 
+import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import Application.interfaces.Obiect;
-import static marvin.MarvinPluginCollection.*;
-import marvin.image.MarvinImage;
-import marvin.io.MarvinImageIO;
 
 public class Export{
 	
 	private JButton export;
 	private static Add_Image Add_imageTemp;
-	private Vector<Obiect> listOfObjects;
-	private MarvinImage cropImage;
-	private selectObject selectObjectTemp;
+	private static Vector<Obiect> listOfObjects;
 	private static ActionListener exportAction;
 	private static boolean createdBooleanExport = false;
-	private static boolean IAE = false;
+	private BufferedImage image;
 	
-	public Export(JFrame frame,JButton export, Add_Image Add_imageTemp, selectObject selectObjectTemp){
-		Export.Add_imageTemp = Add_imageTemp;
+	public Export(JButton export, Vector<Obiect> listOfObjects){
+		Export.Add_imageTemp = Application.classes.Add_Image.add_imageTemp;
 		this.export=export;
-		this.selectObjectTemp = selectObjectTemp;
-		cropImage= Export.Add_imageTemp.getrcImage();
-		listOfObjects = this.selectObjectTemp.getListOfObjects();
+		Export.listOfObjects = listOfObjects;
 	}
+
+	public BufferedImage cropImage(BufferedImage src, Rectangle rect) {
+	      BufferedImage dest = src.getSubimage(rect.x, rect.y, rect.width, rect.height);
+	      return dest; 
+	   }
 	
 	public void load() {
 		exportAction = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(listOfObjects.isEmpty()) {
 					JFrame mesaj = new JFrame();
-					JOptionPane.showMessageDialog(mesaj,"Please, select objects to export", "Warning", JOptionPane.WARNING_MESSAGE, new FileManager().getIcon("warn.png"));
+					JOptionPane.showMessageDialog(mesaj,"Please draw rectangles to export", "Warning", JOptionPane.WARNING_MESSAGE, new FileManager().getIcon("warn.png"));
 					mesaj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				}
 				else {
-					MarvinImage imageOut = new MarvinImage();
 					JFileChooser fileChooser = new JFileChooser();
 					fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 					int response = fileChooser.showOpenDialog(Add_imageTemp.getFrame());
@@ -61,16 +63,21 @@ public class Export{
 						 for(int i=0;i<allvct.size();i++){	
 						 	for(int j=0;j<namevct.length;j++){	 		
 						 		if(allvct.get(i).equals(namevct[j])){
-						 			java.awt.Rectangle rect=listOfObjects.get(i).getReact();
+						 			java.awt.Rectangle rect=listOfObjects.get(i).getRect();
 						 			try {
-										crop(cropImage,imageOut,rect.x,rect.y,rect.width,rect.height);
-									} catch (IllegalArgumentException e1) {
-										IAE = true;
+						 				image = Application.classes.JDrawPanel.getImageToCrop();
+						 				image = Application.classes.DrawStart.resizeImage(image, 800, 543);
+						 				try {
+						 				image = cropImage(image, rect);
+						 				} catch (RasterFormatException e1) {}
+									} catch (IOException e1) {
+										e1.printStackTrace();
 									}
-						 			if(IAE == false) {
 						 				String path = file.getAbsolutePath()+'/'+allvct.get(i)+".jpg";
 						 				if(new FileManager().FileExist(path) == false) {
-						 					MarvinImageIO.saveImage(imageOut, path);
+											try {
+												ImageIO.write(image , "png", new File(path));
+											} catch (IOException e1) {}
 						 					aux[j] = aux[j]-1;
 						 					OK = true;
 						 				} else {
@@ -84,11 +91,11 @@ public class Export{
 						 						conti++;
 						 						path = file.getAbsolutePath()+'/'+allvct.get(i)+" ("+conti+").jpg";
 						 					}
-						 					MarvinImageIO.saveImage(imageOut, path);
+						 					try {
+												ImageIO.write(image , "png", new File(path));
+											} catch (IOException e1) {}
 						 					aux[j] = aux[j]-1;
 						 				}					 				
-						 			}
-						 			IAE = false;
 						 		}
 						 	}
 						 }
@@ -96,6 +103,7 @@ public class Export{
 						 		JFrame mesaj = new JFrame();
 						 		JOptionPane.showMessageDialog(mesaj,"Export done!","Info",JOptionPane.INFORMATION_MESSAGE, new FileManager().getIcon("done.png"));
 						 		mesaj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+						 		
 						 	}
 						}
 					}

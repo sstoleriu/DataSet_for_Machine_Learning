@@ -18,7 +18,7 @@ public class ComboBox {
 	public void modComboBox(JFrame frame, Vector<String> names){
 		this.frame = frame;
 		selectObjectVar = new JComboBox<String>(names);
-		selectObjectVar.setBounds(839, 389, 187, 41);
+		selectObjectVar.setBounds(839, 409, 187, 41);
 		this.frame.getContentPane().add(selectObjectVar);
 		SwingUtilities.updateComponentTreeUI(this.frame);
 	}

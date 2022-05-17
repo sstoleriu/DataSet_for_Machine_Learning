@@ -251,14 +251,14 @@ public class TagMenu {
 	void initialize_menubuttons() throws IOException {
 		JFrame newmenu = new JFrame();
 		newmenu.setResizable(false);
-		newmenu.setBounds(100, 100, 301, 140);
+		newmenu.setBounds(100, 100, 293, 140);
 		newmenu.setContentPane(new JLabel(new FileManager().getIcon("newmenu.png")));
 		newmenu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		newmenu.getContentPane().setLayout(null);
 		newmenu.setLocationRelativeTo(null);
 		newmenu.setIconImage(new FileManager().getImage("iconDataSet.png"));
 		newmenu.setTitle("New tag");
-		newmenu.setLocation(X - frame_tagmenu.getWidth() - 4, Y);
+		newmenu.setLocation(X - frame_tagmenu.getWidth(), Y);
 		newmenu.setVisible(false);
 		newmenu.addWindowListener(new WindowAdapter() { 
 	        @Override
@@ -269,7 +269,7 @@ public class TagMenu {
 		
 		JTextField nchange = new JTextField();
 		nchange.setText("Insert name");
-		nchange.setBounds(10, 11, 128, 26);
+		nchange.setBounds(6, 11, 126, 26);
 		newmenu.getContentPane().add(nchange);
 		nchange.setColumns(1);
 		
@@ -277,18 +277,18 @@ public class TagMenu {
 		cchange.setBackground(Color.CYAN);
 		cchange.setEditable(false);
 		cchange.setColumns(1);
-		cchange.setBounds(148, 11, 126, 26);
+		cchange.setBounds(144, 11, 126, 26);
 		newmenu.getContentPane().add(cchange);
 		
 		Add = new JButton("Add");
 		Add.setFocusPainted(false);
-		Add.setBounds(10, 48, 128, 42);
+		Add.setBounds(6, 48, 126, 42);
 		newmenu.getContentPane().add(Add);
 		frame_addtag=newmenu;
 		
 		cchoose = new JButton("COLOR");
 		cchoose.setFocusPainted(false);
-		cchoose.setBounds(146, 48, 128, 42);
+		cchoose.setBounds(144, 48, 126, 42);
 		newmenu.getContentPane().add(cchoose);
 		
 		cchoose.addMouseListener(new MouseAdapter() {
@@ -351,7 +351,6 @@ public class TagMenu {
 				}
 			}
 			});	
-		
 	}
 	
 	public void changeTagMenuIcons(int cont) {

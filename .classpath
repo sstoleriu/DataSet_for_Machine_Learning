@@ -6,6 +6,5 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="D:/Eclipse/work11may/DataSet_for_Machine_Learning/lib/marvin_1.5.5.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

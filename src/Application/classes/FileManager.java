@@ -8,26 +8,12 @@ import javax.imageio.ImageIO;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
-import marvin.image.MarvinImage;
-import marvin.io.MarvinImageIO;
-
 public class FileManager {
 	
-	private File file = new File("src/Application/resources/images/startDataSet.png");
-	private MarvinImage image = MarvinImageIO.loadImage(file.toString());
 	private String iconFirstPath = "src/Application/resources/images/";
 	private Icon icon;
 	
 	FileManager(){
-	}
-	
-	public MarvinImage getBackground() {
-		return image;
-	}
-	
-	public MarvinImage getMovedDataSet(String iconSecondPath) {
-		File iconFile = new File(iconFirstPath+iconSecondPath);
-		return MarvinImageIO.loadImage(iconFile.toString());
 	}
 	
 	public Icon getIcon(String iconSecondPath) {

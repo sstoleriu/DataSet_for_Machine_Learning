@@ -2,34 +2,38 @@ package Application.classes;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.Vector;
 
 import javax.swing.JButton;
+
 import Application.interfaces.Obiect;
 
 public class Refresh {
 
-	private Add_Image Add_image;
 	private JButton refresh;
-	private Vector<Obiect> listOfObjects = new Vector<Obiect>();
+	private static Vector<Obiect> listOfObjects;
 	private static ActionListener refreshAction;
 	private static boolean createdBooleanRefresh = false;
+	private static JDrawPanel drawPanel;
 	
-	Refresh(){
+	public Refresh(JButton refresh, Vector<Obiect> listOfObjects, JDrawPanel drawPanel) {
+		this.refresh = refresh;
+		Refresh.listOfObjects = listOfObjects;
+		Refresh.drawPanel = drawPanel;
 	}
 	
-	public Refresh(JButton refresh, Vector<Obiect> listOfObjects, Add_Image Add_image) {
-		this.refresh = refresh;
-		this.listOfObjects = listOfObjects;
-		this.Add_image = Add_image;
+	public void giveList(Vector<Obiect> listOfObjects) {
+		Refresh.listOfObjects = listOfObjects;
 	}
 	
 	public void load() {
 		refreshAction = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				try {
+					drawPanel.clear();
+				} catch (IOException e1) {}
 				listOfObjects.clear();
-				Add_image.refreshImage();
-				new MouseClick().refresh();
 			}
 		};
 		if(createdBooleanRefresh == false) {

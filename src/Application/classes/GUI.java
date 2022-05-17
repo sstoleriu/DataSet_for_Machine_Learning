@@ -1,15 +1,18 @@
 package Application.classes;
 
+import java.awt.BorderLayout;
 import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 public class GUI {
 	
 	private JFrame frame;
+	private JPanel panel;
 	private JButton Add_Image,
 					Tag_Menu,
 					Export,
@@ -28,7 +31,7 @@ public class GUI {
 	 */
 	public GUI() throws IOException {
 		initialize();
-		Add_Image imagine = new Add_Image(frame, Add_Image, selectObjectVar, Export, Tag_Menu, combobox, Refresh, Help, Icons, Credits);
+		Add_Image imagine = new Add_Image(frame, panel, Add_Image, selectObjectVar, Export, Tag_Menu, combobox, Refresh, Help, Icons, Credits);
 		
 		imagine.load();
 	}
@@ -48,6 +51,12 @@ public class GUI {
 		frame.setLocationRelativeTo(null);
 		frame.getContentPane().setLayout(null);
 		frame.setIconImage(new FileManager().getImage("iconDataSet.png"));
+		
+		panel = new JPanel();
+		panel.setBounds(10, 10, 800, 543);
+		panel.setOpaque(false);
+		panel.setLayout(new BorderLayout());
+		frame.getContentPane().add(panel);
 		
 		Help = new JButton("Helper");
 		Help.setBounds(839, 49, 187, 41);
