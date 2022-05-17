@@ -295,6 +295,7 @@ public class Helper {
 			public void actionPerformed(ActionEvent e) {
 				if(OK) {
 					frame.setVisible(false);
+					frame.setLocation(X,Y);
 					OK=false;
 				}
 				else {

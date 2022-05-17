@@ -61,8 +61,7 @@ public class TagMenu {
 	
 	void initialize_tags() throws IOException{
 		//Initialization of Tag menu
-		frame.setResizable(false);
-		
+		frame.setResizable(false);	
 		fn = new FileName();
 		fc = new FileColor();
 		names=fn.getlistname();
@@ -83,6 +82,10 @@ public class TagMenu {
 	        @Override
 	        public void windowClosing(WindowEvent e) { 
 	                OKtagm = false;
+	                OKaddt = false;
+	                frame_addtag.setVisible(false);
+	                frame_tagmenu.setLocation(X - frame_tagmenu.getWidth(), Y + Y/2 + 25);
+	                frame_addtag.setLocation(X - frame_tagmenu.getWidth(), Y);
 	        }
 	    });
 		
@@ -136,6 +139,7 @@ public class TagMenu {
 				if(OKaddt) {	
 					frame_addtag.setVisible(false);
 					OKaddt = false;
+					frame_addtag.setLocation(X - frame_tagmenu.getWidth(), Y);
 				}
 				else {
 					frame_addtag.setVisible(true);
@@ -237,12 +241,15 @@ public class TagMenu {
 			public void actionPerformed(ActionEvent e) {
 				if(OKtagm ) {
 					frame_tagmenu.setVisible(false);
-					OKtagm =false;
+					OKtagm = false;
 					frame_tagmenu.setLocation(X - frame_tagmenu.getWidth(), Y + Y/2 + 25);
+					OKaddt = false;
+					frame_addtag.setVisible(false);
+					frame_addtag.setLocation(X - frame_tagmenu.getWidth(), Y);
 				}
 				else {
 					frame_tagmenu.setVisible(true);
-					OKtagm =true;
+					OKtagm = true;
 				}
 			}
 		});
@@ -263,7 +270,8 @@ public class TagMenu {
 		newmenu.addWindowListener(new WindowAdapter() { 
 	        @Override
 	        public void windowClosing(WindowEvent e) { 
-	                OKaddt = false;
+	        	frame_addtag.setLocation(X - frame_tagmenu.getWidth(), Y);
+	        	OKaddt = false;
 	        }
 	    });
 		
