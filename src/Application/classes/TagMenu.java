@@ -127,7 +127,7 @@ public class TagMenu {
 		colortag.setColumns(1);
 		//MOUSE ACTION OF TAG MENU BUTTON
 		list.addMouseListener(new MouseAdapter() {
-			public void mouseClicked(MouseEvent arg0) {
+			public void mousePressed(MouseEvent arg0) {
 			int index = list.getSelectedIndex();
 			colortag.setOpaque(true);
 			colortag.setBackground(colors.get(index));
@@ -135,7 +135,7 @@ public class TagMenu {
 			});	
 		
 		newtag.addMouseListener(new MouseAdapter() {
-			public void mouseClicked(MouseEvent arg0) {
+			public void mousePressed(MouseEvent arg0) {
 				if(OKaddt) {	
 					frame_addtag.setVisible(false);
 					OKaddt = false;
@@ -149,7 +149,7 @@ public class TagMenu {
 			});	
 		//MOUSE ACTION OF EDIT COLOR BUTTON
 		editcolor.addMouseListener(new MouseAdapter() {
-			public void mouseClicked(MouseEvent arg0) {
+			public void mousePressed(MouseEvent arg0) {
 				try {
 					@SuppressWarnings("unused")
 					Color error = colors.get(list.getSelectedIndex());;
@@ -174,7 +174,7 @@ public class TagMenu {
 			});	
 		//MOUSE ACTION OF EDIT NAME BUTTON
 		editname.addMouseListener(new MouseAdapter() {
-			public void mouseClicked(MouseEvent arg0) {
+			public void mousePressed(MouseEvent arg0) {
 				try {
 					@SuppressWarnings("unused")
 					String error = names.get(list.getSelectedIndex());
@@ -205,7 +205,7 @@ public class TagMenu {
 			});
 		//MOUSE ACTION OF DELETE TAG BUTTON
 		deltag.addMouseListener(new MouseAdapter() {
-			public void mouseClicked(MouseEvent arg0) {
+			public void mousePressed(MouseEvent arg0) {
 				try {
 					@SuppressWarnings("unused")
 					String error = names.get(list.getSelectedIndex());
@@ -300,14 +300,14 @@ public class TagMenu {
 		newmenu.getContentPane().add(cchoose);
 		
 		cchoose.addMouseListener(new MouseAdapter() {
-			public void mouseClicked(MouseEvent arg0) {
+			public void mousePressed(MouseEvent arg0) {
 				Color colour=JColorChooser.showDialog(cchange,"Choose color", Color.white);
 				cchange.setBackground(colour);
 			}
 			});	
 		//MOUSE ACTION OF ADD NEW TAG BUTTON
 		Add.addMouseListener(new MouseAdapter() {
-			public void mouseClicked(MouseEvent arg0) {
+			public void mousePressed(MouseEvent arg0) {
 				String auxname = nchange.getText();
 				FileName fn = null;
 				try {
