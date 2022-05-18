@@ -1,82 +1,117 @@
 package Application.classes;
 
+import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.awt.image.RasterFormatException;
 import java.io.File;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Vector;
 
+import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import Application.interfaces.Obiect;
-import static marvin.MarvinPluginCollection.*;
-import marvin.image.MarvinImage;
-import marvin.io.MarvinImageIO;
 
 public class Export{
 	
-	private JButton Export;
-	private static Add_Image Add_image;
-	private Vector<Obiect> listOfObjects;
-	private MarvinImage cropImage;
+	private JButton export;
+	private static Add_Image Add_imageTemp;
+	private static Vector<Obiect> listOfObjects;
+	private static ActionListener exportAction;
+	private static boolean createdBooleanExport = false;
+	private BufferedImage image;
 	
-	public Export(JFrame frame,JButton Export, Add_Image Add_image, Vector<Obiect> listOfObjects, MarvinImage cropImage){
-		Application.classes.Export.Add_image = Add_image;
-		this.Export=Export;
-		this.listOfObjects = listOfObjects;
-		this.cropImage=cropImage;
+	public Export(JButton export, Vector<Obiect> listOfObjects){
+		Export.Add_imageTemp = Application.classes.Add_Image.add_imageTemp;
+		this.export=export;
+		Export.listOfObjects = listOfObjects;
 	}
 
-	public static Add_Image getAddImage(){
-		return Add_image;
-	}
+	public BufferedImage cropImage(BufferedImage src, Rectangle rect) {
+	      BufferedImage dest = src.getSubimage(rect.x, rect.y, rect.width, rect.height);
+	      return dest; 
+	   }
 	
-	
-	public void Load2() {		
-		Export.addActionListener(new ActionListener() {
-
+	public void load() {
+		exportAction = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MarvinImage imageOut = new MarvinImage();
-				JFileChooser fileChooser2 = new JFileChooser();
-				fileChooser2.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-				int response = fileChooser2.showOpenDialog(null);
-				File file2 = fileChooser2.getSelectedFile();
-
-				if (response == JFileChooser.APPROVE_OPTION) {
-					VctCrop vct1=new VctCrop(listOfObjects);
-				 	Vector<String> allvct=vct1.getvct();
-				 	VctFreq vct2=new VctFreq(allvct);
-				 	String namevct[]=vct2.getName_VctFreq();
-				 	Integer contorvct[]=vct2.getContor_VctFreq();
-				 	Integer aux[]=Arrays.copyOf(contorvct, contorvct.length);
-				 	int conti;
-					 for(int i=0;i<allvct.size();i++){
-					 	for(int j=0;j<namevct.length;j++){
-					 		if(allvct.get(i).equals(namevct[j])){
-					 			java.awt.Rectangle rect=listOfObjects.get(i).getReact();
-					 			crop(cropImage,imageOut,rect.x,rect.y,rect.width,rect.height);
-					 			conti=contorvct[j]-aux[j];
-					 			aux[j]=aux[j]-1;
-					 			MarvinImageIO.saveImage(imageOut, file2.getAbsolutePath()+'/'+allvct.get(i)+" ("+conti+").jpg");
-					 			}
-					 		}
-					 	}
-					 if(allvct.size()!=0){
+				if(listOfObjects.isEmpty()) {
 					JFrame mesaj = new JFrame();
-					JOptionPane.showMessageDialog(mesaj,"Export done!");
+					JOptionPane.showMessageDialog(mesaj,"Please draw rectangles to export", "Warning", JOptionPane.WARNING_MESSAGE, new FileManager().getIcon("warn.png"));
 					mesaj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-					 }
-					 else{
-						JFrame mesaj = new JFrame();
-						JOptionPane.showMessageDialog(mesaj,"Please select objects to export!");
-						mesaj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-					 }
 				}
+				else {
+					JFileChooser fileChooser = new JFileChooser();
+					fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+					int response = fileChooser.showOpenDialog(Add_imageTemp.getFrame());
+					File file = fileChooser.getSelectedFile();
+					if (response == JFileChooser.APPROVE_OPTION) {
+						VctCrop vct1=new VctCrop(listOfObjects);
+					 	Vector<String> allvct=vct1.getvct();
+					 	VctFreq vct2=new VctFreq(allvct);
+					 	String namevct[]=vct2.getName_VctFreq();
+					 	Integer contorvct[]=vct2.getContor_VctFreq();
+					 	Integer aux[]=Arrays.copyOf(contorvct, contorvct.length);
+					 	int conti;
+					 	boolean OK = false;
+						 for(int i=0;i<allvct.size();i++){	
+						 	for(int j=0;j<namevct.length;j++){	 		
+						 		if(allvct.get(i).equals(namevct[j])){
+						 			java.awt.Rectangle rect=listOfObjects.get(i).getRect();
+						 			try {
+						 				image = Application.classes.JDrawPanel.getImageToCrop();
+						 				image = Application.classes.DrawStart.resizeImage(image, 800, 543);
+						 				try {
+						 				image = cropImage(image, rect);
+						 				} catch (RasterFormatException e1) {}
+									} catch (IOException e1) {
+										e1.printStackTrace();
+									}
+						 				String path = file.getAbsolutePath()+'/'+allvct.get(i)+".jpg";
+						 				if(new FileManager().FileExist(path) == false) {
+											try {
+												ImageIO.write(image , "png", new File(path));
+											} catch (IOException e1) {}
+						 					aux[j] = aux[j]-1;
+						 					OK = true;
+						 				} else {
+						 					if(OK) {
+						 						conti = contorvct[j]-aux[j];
+						 					} else {
+						 						conti = contorvct[j]-aux[j]+1;
+						 					}		
+						 					path = file.getAbsolutePath()+'/'+allvct.get(i)+" ("+conti+").jpg";
+						 					while(new FileManager().FileExist(path)) {
+						 						conti++;
+						 						path = file.getAbsolutePath()+'/'+allvct.get(i)+" ("+conti+").jpg";
+						 					}
+						 					try {
+												ImageIO.write(image , "png", new File(path));
+											} catch (IOException e1) {}
+						 					aux[j] = aux[j]-1;
+						 				}					 				
+						 		}
+						 	}
+						 }
+						 	if(allvct.size()!=0){
+						 		JFrame mesaj = new JFrame();
+						 		JOptionPane.showMessageDialog(mesaj,"Export done!","Info",JOptionPane.INFORMATION_MESSAGE, new FileManager().getIcon("done.png"));
+						 		mesaj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+						 		
+						 	}
+						}
+					}
+				}
+			};
+			if(createdBooleanExport == false) {
+				export.addActionListener(exportAction);
+				createdBooleanExport = true;
 			}
-		});
 	}
-	
 }

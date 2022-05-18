@@ -11,7 +11,7 @@ public class VctCrop {
 	VctCrop(Vector<Obiect> list){
 		for(int i=0;i<list.size();i++)
 		{
-			vct.add(i,list.get(i).getClass().getSimpleName());
+			vct.add(i,list.get(i).getName());
 		}
 	}
 	
