@@ -1,12 +1,15 @@
 package Application.classes;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.Stroke;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -18,6 +21,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.border.StrokeBorder;
 import javax.swing.event.MouseInputAdapter;
 
 import Application.interfaces.Obiect;
@@ -78,6 +82,11 @@ public class JDrawPanel extends JPanel
 			}
 				if (rect != null){
 					g2d = (Graphics2D)g;
+					
+					Font myfont =new Font("TimesRoman", Font.PLAIN, 30);
+					g2d.setStroke(new BasicStroke(3.0f));
+					g2d.setFont(myfont);;
+					g2d.setFont(myfont);
 					g2d.setColor(colors.get(selectObjectVar.getSelectedIndex()));
 					g2d.draw(rect);
 					x = rect.x+rect.width/2-g2d.getFontMetrics().stringWidth(names.get(selectObjectVar.getSelectedIndex()))/2;
@@ -92,8 +101,13 @@ public class JDrawPanel extends JPanel
 
 		public void addRectangle(Rectangle rectangle)
 		{
+			
 			if(rect.width>10 && rect.height>10) {
 			g2d = (Graphics2D)image.getGraphics();
+			Font myfont =new Font("TimesRoman", Font.PLAIN, 30);
+			g2d.setFont(myfont);
+			g2d.setStroke(new BasicStroke(3.0f));
+			
 			g2d.setColor( colors.get(selectObjectVar.getSelectedIndex()) );
 			g2d.draw( rectangle );
 			g2d.drawString(names.get(selectObjectVar.getSelectedIndex()), x, y);
