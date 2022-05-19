@@ -9,7 +9,6 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Rectangle;
-import java.awt.Stroke;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -21,7 +20,6 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.border.StrokeBorder;
 import javax.swing.event.MouseInputAdapter;
 
 import Application.interfaces.Obiect;
@@ -90,10 +88,10 @@ public class JDrawPanel extends JPanel
 					g2d.setColor(colors.get(selectObjectVar.getSelectedIndex()));
 					g2d.draw(rect);
 					x = rect.x+rect.width/2-g2d.getFontMetrics().stringWidth(names.get(selectObjectVar.getSelectedIndex()))/2;
-		            if(rect.y>15) {
-		            	y = rect.y - 5;
+		            if(rect.y>30) {
+		            	y = rect.y - 10;
 		            } else {
-		            	y = rect.y + 15;
+		            	y = rect.y + 25;
 		            }
 		            g2d.drawString(names.get(selectObjectVar.getSelectedIndex()), x, y);
 				}
