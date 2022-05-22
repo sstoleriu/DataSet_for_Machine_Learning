@@ -9,6 +9,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+/**
+ * Clasa pentru crearea interfata grafica
+ *
+ */
 public class GUI {
 	
 	private JFrame frame;
@@ -23,11 +27,9 @@ public class GUI {
 	private static JComboBox<String> selectObjectVar;
 	private ComboBox combobox = new ComboBox();
 	
-	
-	
 	/**
-	 * Create the application.
-	 * @throws IOException 
+	 * Crearea aplicatiei
+	 * @throws IOException Exceptie de input/output
 	 */
 	public GUI() throws IOException {
 		initialize();
@@ -37,8 +39,18 @@ public class GUI {
 	}
 	
 	/**
-	 * Initialize the contents of the frame.
-	 * @throws IOException 
+	 * Initializarea continutului frame-ului
+	 * Creare si initializare: 
+	 * frame setat,
+	 * JPannel in care va fi adaugata imaginea
+	 * Buton de ajutor/informatii suplimentare,
+	 * Buton de reincarcare a programului,
+	 * Buton pentru inserare imagine,
+	 * Buton pentru adaugarea/editarea/stergerea de taguri,
+	 * Buton pentru exportarea imaginilor decupate,
+	 * Buton pentru schimbarea design-ului iconitelor de pe butoane,
+	 * Buton pentru informatii contribuitori
+	 * @throws IOException Exceptie de input/output
 	 */
 	private void initialize() throws IOException {
 
@@ -97,6 +109,10 @@ public class GUI {
 		
 	}
 
+		/**
+		 * Getter pentru returnarea frame-ului
+		 * @return frame Frame
+		 */
 		public JFrame getFrame() {
 			return frame;
 		}

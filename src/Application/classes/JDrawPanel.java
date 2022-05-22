@@ -24,11 +24,12 @@ import javax.swing.event.MouseInputAdapter;
 
 import Application.interfaces.Obiect;
 
+/**
+ * Clasa pentru desenarea chenarului
+ */
 public class JDrawPanel extends JPanel
 	{
-		/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 		private static BufferedImage image;
 		private static BufferedImage imageBackup;
@@ -41,17 +42,29 @@ public class JDrawPanel extends JPanel
 		private Graphics2D g2d;
 		private int x, y;
 		
+		/**
+		 * Getter pentru returnarea imaginii de decupat
+		 * @return imageBackup Imaginea de backup pentru decupare
+		 */
 		public static BufferedImage getImageToCrop() {
 			return imageBackup;
 		}
 		
+		/**
+		 * Getter pentru lista de obiecte pentru care se apeleaza metoda de desenare
+		 * @return listOfObjects lista de obiecte create
+		 */
 		public Vector<Obiect> getList() {
 			return listOfObjects;
 		}
 		
-		public JDrawPanel() {
-		}
-		
+		/**
+		 * Constructor de initializare cu parametri
+		 * Adugare actiune la apasarea mouse-ului pentru optiunea de alegere din lista, 
+		 *  preluare nume din lista si culori atribuite
+		 * @param image Imaginea adaugata
+		 * @param imageBackup Imaginea de backup
+		 */
 		public JDrawPanel(BufferedImage image, BufferedImage imageBackup)
 		{
 			JDrawPanel.image = image;
@@ -64,7 +77,13 @@ public class JDrawPanel extends JPanel
 			JDrawPanel.colors = Application.classes.DrawStart.getColor();
 		}
 
+		public JDrawPanel() {
+		}
+		
 		@Override
+		/**
+		 * Getter pentru preluarea marimii preferate si predenifite pentru imagine
+		 */
 		public Dimension getPreferredSize()
 		{
 			return isPreferredSizeSet() ?
@@ -72,6 +91,9 @@ public class JDrawPanel extends JPanel
 		}
 
 		@Override
+		/**
+		 * Metoda de desenare a chenarului
+		 */
 		protected void paintComponent(Graphics g)
 		{
 			super.paintComponent(g);
@@ -97,6 +119,11 @@ public class JDrawPanel extends JPanel
 				}
 		}
 
+		
+		/**
+		 * Metoda pentru adaugarea chenarului si setarea culorii
+		 * @param rectangle dreptunghiul creat prin selectarea a doua puncte pe imaginea incarcata in aplicatie
+		 */
 		public void addRectangle(Rectangle rectangle)
 		{
 			
@@ -121,6 +148,10 @@ public class JDrawPanel extends JPanel
 			}
 		}
 
+		/**
+		 * Metoda de stergere a dreptunghiurilor si redimensionarea imaginii la valorile presetate
+		 * @throws IOException Exceptie de input/output
+		 */
 		public void clear() throws IOException
 		{
 			rectangles.clear();
@@ -129,6 +160,14 @@ public class JDrawPanel extends JPanel
 			repaint();
 		}
 		
+		/**
+		 *  Metoda pentru redimensionarea imaginii
+		 * @param originalImage Imaginea originala
+		 * @param targetWidth Valoarea latimii
+		 * @param targetHeight Valoarea lungimii
+		 * @return outputImage Imaginea finala
+		 * @throws IOException Exceptie de input/output
+		 */
 		public BufferedImage resizeImage(BufferedImage originalImage, int targetWidth, int targetHeight) throws IOException {
 		    Image resultingImage = originalImage.getScaledInstance(targetWidth, targetHeight, Image.SCALE_DEFAULT);
 		    BufferedImage outputImage = new BufferedImage(targetWidth, targetHeight, BufferedImage.TYPE_INT_RGB);
@@ -136,6 +175,11 @@ public class JDrawPanel extends JPanel
 		    return outputImage;
 		}
 		
+		/**
+		 * Metoda pentru clonarea imaginii existente in buffer
+		 * @param image Imagine adaugata
+		 * @return clone Imaginea clonata dupa imaginea originala
+		 */
 		public static final BufferedImage clone(BufferedImage image) {
 		    BufferedImage clone = new BufferedImage(image.getWidth(),
 		            image.getHeight(), image.getType());
@@ -145,6 +189,9 @@ public class JDrawPanel extends JPanel
 		    return clone;
 		}
 		
+		/**
+		 * Metoda de creare a unei imagini simple prin clonare
+		 */
 		private void createEmptyImage()
 		{
 			image = clone(image);
@@ -159,6 +206,9 @@ public class JDrawPanel extends JPanel
 			private Point startPoint;
 			private boolean drawing = false;
 
+			/**
+			 *  Metoda care redimenisoneaza un chenar la miscarea mouse-ului 
+			 */
 			public void mouseMoved(MouseEvent e) {
 				if(drawing) {
 					int x = Math.min(startPoint.x, e.getX());
@@ -170,6 +220,10 @@ public class JDrawPanel extends JPanel
 				}
 			}
 			
+			/**
+			 * Metoda care la apasarea mouse-ului preia punctul initial pentru desenarea chenarului
+			 * si verifica daca masuratorile sunt valide pentru adaugarea unui dreptunghi
+			 */
 			public void mousePressed(MouseEvent e)
 			{
 				if(drawing == false) {

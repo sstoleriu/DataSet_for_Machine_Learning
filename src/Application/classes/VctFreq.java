@@ -4,11 +4,19 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Vector;
 
+/**
+ * Clasa pentru redenumirea imaginilor decupate (nume + numar ordine)
+ *
+ */
 public class VctFreq {
 	private String name[];
 	private Integer contor[];
 	Map<String, Integer> freqMap=new HashMap<>();
 	
+	/**
+	 * Constructor de initializare cu parametri
+	 * @param allvct Vector care contine numele obiectului si indexul(contorul)
+	 */
 	VctFreq(Vector<String> allvct){
 		for(int i=0;i<allvct.size();i++)
 		{
@@ -23,10 +31,20 @@ public class VctFreq {
 		contor=freqMap.values().toArray(new Integer[0]);
 	}
 	
+	/**
+	 * Getter pentru returnarea numelui obiectelor
+	 *  - va fi utilizat la redenumirea pozelor decupate si exportate
+	 * @return name Numele obiectelor care se pot selecta
+	 */
 	public String[] getName_VctFreq() {
 		return name;
 	}
 	
+	/**
+	 * Getter pentru returnarea contorului
+	 *  - va fi utilizat pentru adaugarea indecsilor in redenumirea pozelor in ordinea selectarii lor
+	 * @return contor Indexul corespunzator ordinii selectarii
+	 */
 	public Integer[] getContor_VctFreq() {
 		return contor;
 	}

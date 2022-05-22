@@ -12,6 +12,9 @@ import javax.swing.JPanel;
 
 import Application.interfaces.Obiect;
 
+/**
+ * Clasa pentru desenarea chenarelor
+ */
 public class DrawStart {
 
 	private JPanel panel;
@@ -24,18 +27,39 @@ public class DrawStart {
 	private JDrawPanel drawPanel;
 	private BufferedImage image;
 	
+	/**
+	 * Getter pentru preluarea listei de selectare cu numele obiectelor de tip JComboBox
+	 * @return selectObjectVar obiectul ales
+	 */
 	public static JComboBox<String> getComboBox(){
 		return selectObjectVar;
 	}
 	
+	/**
+	 * Getter pentru returnarea vectorului de nume ale obiectelor pentru care se deseneaza chenar
+	 * @return names Vectorul cu numele obiectelor
+	 */
 	public static Vector<String> getNames(){
 		return names;
 	}
 	
+	/**
+	 * Getter pentru returnarea culorilor obiectelor pentru care se deseneaza chenar
+	 * @return colors Culorile chenarului
+	 */
 	public static Vector<Color> getColor(){
 		return colors;
 	}
 	
+	/**
+	 * Constructor de initializare cu parametri
+	 * @param panel JPanel cu imaginea importata
+	 * @param refresh Buton de reincarcare a aplicatiei
+	 * @param export Buton de exportare a imaginilor decupate
+	 * @param names Vectorul care contine numele obiectelor create
+	 * @param colors Vectorul care contine culorile chenarelor create
+	 * @param image Imaginea din buffer
+	 */
 	DrawStart(JPanel panel, JButton refresh, JButton export, Vector<String> names, Vector<Color> colors, Image image){
 		this.panel = panel;
 		this.refresh = refresh;
@@ -46,6 +70,14 @@ public class DrawStart {
 		this.image = (BufferedImage) image;
 	}
 
+	/**
+	 * Metoda pentru redimensionarea imaginii
+	 * @param originalImage Imaginea originala
+	 * @param targetWidth Valoarea latimii
+	 * @param targetHeight Valoarea lungimii
+	 * @return outputImage Imaginea finala
+	 * @throws IOException Exceptie de input/output
+	 */
 	public static BufferedImage resizeImage(BufferedImage originalImage, int targetWidth, int targetHeight) throws IOException {
 	    Image resultingImage = originalImage.getScaledInstance(targetWidth, targetHeight, Image.SCALE_DEFAULT);
 	    BufferedImage outputImage = new BufferedImage(targetWidth, targetHeight, BufferedImage.TYPE_INT_RGB);
@@ -53,6 +85,12 @@ public class DrawStart {
 	    return outputImage;
 	}
 	
+	/**
+	 * Metoda pentru inceperea desenarii chenarelor
+	 * Initializeaza panoul in care se va desena
+	 * Reimprospateaza Panoul si lista de obiecte
+	 * @throws IOException Exceptie de input/output
+	 */
 	public void StartDrawing() throws IOException {
 		drawPanel =  new JDrawPanel(resizeImage(image, 800, 543), image);
 		panel.add(drawPanel);
@@ -62,6 +100,10 @@ public class DrawStart {
 		crop.load();
 	}
 	
+	/**
+	 * Getter pentru vectorul listei de obiecte pentru care se deseneaza chenar
+	 * @return listOfObjects Lista de obiecte create
+	 */
 	public Vector<Obiect> getList() {
 		listOfObjects = drawPanel.getList();
 		System.out.println("DrawStart: "+listOfObjects);

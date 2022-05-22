@@ -25,6 +25,10 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 
+/**
+ * Clasa pentru Meniul de tag-uri: crearea/editarea/stergerea 
+ *
+ */
 public class TagMenu {
 	
 	private JButton TagMenu,
@@ -50,6 +54,15 @@ public class TagMenu {
 	private static int X;
 	private static int Y;
 	
+	/**
+	 * Constructor de initializare cu parametri
+	 * @param TagMenu Butonul pentru meniul tag-urilor
+	 * @param combobox Lista care contine vectorul names - numele obiectelor
+	 * @param frame Frame-ul setat
+	 * @param selectObjectVar Obiectul selectat din lista
+	 * @param X Coordonata X a frame-ului principal folosita pentru alinierea celorlalte frame-uri
+	 * @param Y Coordonata Y a frame-ului principal folosita pentru alinierea celorlalte frame-uri
+	 */
 	public TagMenu(JButton TagMenu, ComboBox combobox, JFrame frame,JComboBox<String> selectObjectVar, int X, int Y) {
 		this.TagMenu = TagMenu;
 		this.combobox = combobox;
@@ -59,8 +72,20 @@ public class TagMenu {
 		Application.classes.TagMenu.Y = Y;
 	}
 	
+	/**
+	 * Initializarea Meniului de tag-uri
+	 * Crearea unei ferestre Tag menu cu butoane
+	 * Initializarea Butonului New
+	 * Initializarea Butonului Name
+	 * Initializarea Butonului Color
+	 * Initializarea Butonului Delete
+	 * Adaugare actiune la apasarea mouse-ului pentru butonul TagMenu
+	 * Adaugare actiune la apasarea mouse-ului pentru butonul de editare culoare
+	 * Adaugare actiune la apasarea mouse-ului pentru butonul de editare nume
+	 * Adaugare actiune la apasarea mouse-ului pentru butonul de stergere tag
+	 * @throws IOException Exceptie de input/output
+	 */
 	void initialize_tags() throws IOException{
-		//Initialization of Tag menu
 		frame.setResizable(false);	
 		fn = new FileName();
 		fc = new FileColor();
@@ -125,7 +150,7 @@ public class TagMenu {
 		colortag.setBounds(10, 176, 126, 44);
 		newtagf.getContentPane().add(colortag);
 		colortag.setColumns(1);
-		//MOUSE ACTION OF TAG MENU BUTTON
+		
 		list.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent arg0) {
 			int index = list.getSelectedIndex();
@@ -147,7 +172,7 @@ public class TagMenu {
 				}
 			}
 			});	
-		//MOUSE ACTION OF EDIT COLOR BUTTON
+		
 		editcolor.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent arg0) {
 				try {
@@ -172,7 +197,7 @@ public class TagMenu {
 				}
 			}
 			});	
-		//MOUSE ACTION OF EDIT NAME BUTTON
+		
 		editname.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent arg0) {
 				try {
@@ -203,7 +228,7 @@ public class TagMenu {
 				}
 			}
 			});
-		//MOUSE ACTION OF DELETE TAG BUTTON
+		
 		deltag.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent arg0) {
 				try {
@@ -235,8 +260,12 @@ public class TagMenu {
 		frame_tagmenu.setLocation(X - frame_tagmenu.getWidth(), Y + Y/2 + 25);
 		}
 	
+	/**
+	 * Metoda pentru initializarea butonului TagMenu
+	 * Adaugarea de actiune la apasarea mouse-ului
+	 */
 	void initialize_tagbtn() {
-		//Initialization of TagMenuButton
+		
 		TagMenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(OKtagm ) {
@@ -255,6 +284,16 @@ public class TagMenu {
 		});
 	}
 	
+	/**
+	 * Initializarea meniului pentru crearea/editarea/stergerea de tag-uri
+	 * Adaugarea de imagini(icons) pe butoane
+	 * Crearea unei pagini noi la apasarea butonului New - creare teag nou
+	 * Initializarea butonului Add - adaugare tag si Color - setare culoare
+	 * Adaugare actiune la apasarea mouse-ului pentru butonul Color
+	 * Adaugare actiune la apasarea mouse-ului pentru butonul Add 
+	 * Afisarea de mesaje pentru tag creat, nume tag deja utilizat, nume invalid
+	 * @throws IOException Exceptie de input/output
+	 */
 	void initialize_menubuttons() throws IOException {
 		JFrame newmenu = new JFrame();
 		newmenu.setResizable(false);
@@ -305,7 +344,7 @@ public class TagMenu {
 				cchange.setBackground(colour);
 			}
 			});	
-		//MOUSE ACTION OF ADD NEW TAG BUTTON
+		
 		Add.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent arg0) {
 				String auxname = nchange.getText();
@@ -361,6 +400,11 @@ public class TagMenu {
 			});	
 	}
 	
+	
+	/**
+	 * Metoda pentru schimbarea design-ului butonului TagMenu la apasarea butonului Icons
+	 * @param cont Contor pentru numarul de apasari a butonului Icons
+	 */
 	public void changeTagMenuIcons(int cont) {
 		newtag.setIcon(new FileManager().getIcon(cont+"add.png"));
 		Add.setIcon(new FileManager().getIcon(cont+"add.png"));
@@ -370,15 +414,27 @@ public class TagMenu {
 		deltag.setIcon(new FileManager().getIcon(cont+"delete.png"));
 	}
 	
+	/**
+	 * Getter pentru returnarea obiectului selectat din JComboBox
+	 * @return selectObjectVar Obiectul selectat din lista existenta
+	 */
 	public static JComboBox<String> getSelectObjectVar(){
 		return selectObjectVar;
 	}
 	
+	/**
+	 * Getter pentru returnarea vectorului de nume ale tag-urilor create
+	 * @return names numele tagurilor alese/create
+	 */
 	public static Vector<String> getVectorName(){
 		return names;
 		
 	}
 	
+	/**
+	 * Getter pentru returnarea vectorului de culori ale tag-urilor
+	 * @return colors culorile tagurilor atribuite conform listei/create
+	 */
 	public static Vector<Color> getVectorColor(){
 		return colors;
 		

@@ -18,6 +18,9 @@ import javax.swing.JOptionPane;
 
 import Application.interfaces.Obiect;
 
+/**
+ * Clasa pentru exportarea imaginilor decupate
+ */
 public class Export{
 	
 	private JButton export;
@@ -27,17 +30,37 @@ public class Export{
 	private static boolean createdBooleanExport = false;
 	private BufferedImage image;
 	
+	/**
+	 * Constructor de initializare cu parametri
+	 * @param export Butonul de exportare a imaginilor decupate
+	 * @param listOfObjects Lista cu obiectele pentru care s-a creat chenar si care vor fi exportate
+	 */
 	public Export(JButton export, Vector<Obiect> listOfObjects){
 		Export.Add_imageTemp = Application.classes.Add_Image.add_imageTemp;
 		this.export=export;
 		Export.listOfObjects = listOfObjects;
 	}
 
+	
+	/**
+	 * Metoda pentru decuparea imaginilor
+	 * @param src Imaginea sursa din buffer
+	 * @param rect Chenarul/Dreptunghiul creat
+	 * @return dest Imaginea finala decupata
+	 */
 	public BufferedImage cropImage(BufferedImage src, Rectangle rect) {
 	      BufferedImage dest = src.getSubimage(rect.x, rect.y, rect.width, rect.height);
 	      return dest; 
 	   }
 	
+	/**
+	 * Metoda de incarcare a exportarii imaginilor decupate
+	 * Daca desenarea chenarului nu a fost realizata se afiseaza un mesaj de eroare
+	 * Daca desenarea a fost realizata:
+	 * - se deschide un pop-ul de alegere a folderului in care sa fie facuta exportarea
+	 * - se adauga pentru fiecare imagine nume si numarul ordinii in care a fost creat chenarul corespunzator acesteia
+	 * - se salveaza in folderul local si se afiseaza un mesaj de exportare cu succes.
+	 */
 	public void load() {
 		exportAction = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
