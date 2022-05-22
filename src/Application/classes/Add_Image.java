@@ -20,6 +20,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
+/**
+ * Clasa pentru adaugarea imaginii
+ */
 public class Add_Image {
 	
 	private JButton Add_Image,
@@ -40,6 +43,20 @@ public class Add_Image {
 	private static boolean drawEnabled = false;
 	static Add_Image add_imageTemp;
 	
+	/**
+	 * Metoda de adaugare imagine si initializare parametri
+	 * @param frame Frame-ul setat
+	 * @param panel Panou de tip JPanel in care va fi inserata imaginea
+	 * @param Add_Image Butonul de adaugare de imagini
+	 * @param selectObject JComboBox pentru selectare optiune obiect
+	 * @param export Butonul de export
+	 * @param tagmenu Butonul pentru adaugarea/editarea/stergerea de taguri
+	 * @param combobox 
+	 * @param refresh Butonul prntru reincarcarea programului
+	 * @param help Butonul pentru ajutor/informatii suplimentare
+	 * @param icons Butonul pentru schimbarea design-ului iconitelor de pe butoane,
+	 * @param credits Butonul pentru informatii contribuitori
+	 */
 	public Add_Image(JFrame frame, JPanel panel, JButton Add_Image, JComboBox<String> selectObject, JButton export, JButton tagmenu, ComboBox combobox, JButton refresh, JButton help, JButton icons, JButton credits) {
 		this.frame = frame;
 		this.panel = panel;
@@ -54,6 +71,14 @@ public class Add_Image {
 		this.credits = credits;
 	}
 	
+	/**
+	 * Metoda de incarcare a imaginii
+	 * Initializare imagine, TagMenu, Helper
+	 * Optiunea de selectare a obiectului din lista de obiecte
+	 * Adaugarea imaginii: alegerea dintr-un folder local si inserarea in aplicatie
+	 * Desenare chenar
+	 * Optiunea de exportare a imaginilor din chenare
+	 */
 	public void load() throws IOException {
 		add_imageTemp = this;
 		TagMenu menuTag = new TagMenu(tagmenu, combobox, frame, selectObjectVar, frame.getX(), frame.getY());
@@ -106,25 +131,57 @@ public class Add_Image {
 		});
 	}
 	
+	/**
+	 * Getter pentru preluarea imaginii pe care se vor selecta portiuni de decupare
+	 * @return imagineDraw imaginea pe care se vor desena chenare
+	 */
 	public Image getImageDraw() {
 		return imageDraw;
 	}
+	
+	/**
+	 * Getter pentru preluarea numelor obiectelor care se creeaza
+	 * @return names numele obiectelor alese din lista de obiecte 
+	 */
 	public Vector<String> getNames() {
 		return names;
 	}
+	
+	/**
+	 * Getter pentru returnarea culorilor chenarelor
+	 * @return colors culorile chenarelor atribuite in functie de tag-ul selectat
+	 */
 	public Vector<Color> getColors() {
 		return colors;
 	}
+	
+	/**
+	 * Getter pentru preluarea imaginii adaugate de tip File 
+	 */
 	public File getFileAdd_image(){
 		return this.file;
 	}
+	
+	/**
+	 * Getter pentru returnarea listei cu optiunile de selectare a obiectelor
+	 * @return obiectul selectat 
+	 */
 	public static JComboBox<String> getComboBox() {
 		return selectObjectVar;
 	}
+	
+	/**
+	 * Getter pentru preluarea frame-ului
+	 * @return frame Frame-ul setat
+	 */
 	public JFrame getFrame() {
 		return frame;
 	}
 	
+	/**
+	 * Metoda pentru schimbarea design-ului iconitelor butoanelor la apasarea butonului Icons
+	 * @param cont parametru de tip contor al numarului de apasari
+	 */
 	public void changeMainIcons(int cont) {
 		Add_Image.setIcon(new FileManager().getIcon(cont+"insert.png"));
 		export.setIcon(new FileManager().getIcon(cont+"export.png"));
@@ -134,6 +191,10 @@ public class Add_Image {
 		icons.setIcon(new FileManager().getIcon(cont+"icons.png"));
 	}
 	
+	/**
+	 * Metoda 
+	 * @param ok
+	 */
 	public void moveDataSet(boolean ok) {
 		JLabel panel = new JLabel(new FileManager().getIcon("moveDataSet.png"));
 		panel.setBounds(865, 5, 64, 64);

@@ -10,6 +10,11 @@ public class ComboBox {
 	private JFrame frame;
 	private JComboBox<String> selectObjectVar = new JComboBox<String>();
 	
+	/**
+	 * Constructorul clasei
+	 * Initializeaza cu null frame-ul setat inainte de adaugare imagine 
+	 * Initializeaza cu null obiectul selectat inainte de alegere
+	 */
 	ComboBox(){
 		frame=null;
 		selectObjectVar=null;
@@ -23,6 +28,10 @@ public class ComboBox {
 		SwingUtilities.updateComponentTreeUI(this.frame);
 	}
 	
+	/**
+	 * Getter pentru preluarea obiectului ales din lista existenta
+	 * @return selectObjectVar obiectul selectat
+	 */
 	public JComboBox<String> getcomboBox(){
 		return selectObjectVar;
 	}

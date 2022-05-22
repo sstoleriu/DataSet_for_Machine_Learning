@@ -15,8 +15,14 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 
+/**
+ * Clasa pentru afisarea de informatii ajutatoare la apasare butonului Helper si Credits
+ */
 public class Helper {
 	
+	/**
+	 * Declararea tuturor butoanelor existente pentru care vor fi afisate informatii ajutatoare
+	 */
 	private JButton help,
 					btnAddImage,
 					btnTagMenu,
@@ -35,6 +41,13 @@ public class Helper {
 	private int X,
 				Y;
 	
+	/**
+	 * Constructor de initializare cu parametri
+	 * @param help Buton pentru afisarea de informatii despre butoanele existente
+	 * @param credits Buton pentru afisarea de informatii despre contribuitori
+	 * @param X
+	 * @param Y
+	 */
 	Helper(JButton help, JButton credits, int X, int Y){
 		this.help = help;
 		btnCredits = credits;
@@ -42,8 +55,17 @@ public class Helper {
 		this.Y = Y;
 	}
 	
+	/**
+	 * Metoda de incarcare pentru initializarea frame-ului Helper
+	 * Adaugarea de imagine de tip icons pe buton
+	 * Inserarea de text explicativ in frame
+	 * Adaugarea de actiune la apasarea mouse-ului pentru toate butoanele existente:
+	 * - contine informatii de utilizare pentru toate butoanele existene
+	 * Adaugarea de actiune la apasarea mouse-ului pentru butonul Credits
+	 *  - contine informatii despre contribuitori
+	 */
 	public void load() throws IOException {
-		//Help frame//
+
 		JFrame frame = new JFrame();
 		frame.setContentPane(new JLabel(new FileManager().getIcon("helpmenu.png")));
 		frame.setResizable(false);
@@ -262,7 +284,7 @@ public class Helper {
 		btnWarning.setBounds(209, 494, 143, 56);
 		btnWarning.setHorizontalAlignment(SwingConstants.LEFT);
 		frame.getContentPane().add(btnWarning);
-		//////////////
+		
 		help.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
@@ -295,6 +317,10 @@ public class Helper {
 		});
 	}
 	
+	/**
+	 * Metoda pentru schimbarea design-ului Butonului Helper in functie de numarul de apasari ale butonului Icons
+	 * @param cont Numarul de apasari ale butonului Icons
+	 */
 	public void changeHelpIcons(int cont) {
 		btnAddImage.setIcon(new FileManager().getIcon(cont+"insert.png"));
 		btnTagMenu.setIcon(new FileManager().getIcon(cont+"tagmenu.png"));

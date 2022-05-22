@@ -10,12 +10,18 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.Vector;
 
+/**
+ * Clasa pentru numele fisierului 
+ */
 public class FileName {
 
 	private Vector<String> names = new Vector<>();
 	File name = new File("src/Application/resources/memory/name_tags");
 	Path path = Paths.get(name.getAbsolutePath());
 	
+	/**
+	 * 
+	 */
 	FileName() throws IOException{
 		BufferedReader br_name = Files.newBufferedReader(path);
 		String line = null;
@@ -25,14 +31,25 @@ public class FileName {
 		br_name.close();
 	}
 	
+	/**
+	 * Getter pentru vectorul listei cu nume fisierelor
+	 * @return names Vectorul cu numele fisierelor
+	 */
 	public Vector<String> getlistname(){
 		return names;
 	}
 	
+	/**
+	 * Getter pentru preluarea path-uli
+	 * @return path Path-ul ales
+	 */
 	public Path getPathn() {
 		return path;
 	}
 	
+	/**
+	 * Metoda pentru schimbarea numelui fisierului
+	 */
 	public void changelinename() throws IOException {
 		name.delete();
 		name.createNewFile();
@@ -44,6 +61,11 @@ public class FileName {
 		}
 	}
 	
+	/**
+	 * Metoda pentru stergerea numelui fisierului
+	 * @param index_delete
+	 * @throws IOException
+	 */
 	public void deletelinename(int index_delete) throws IOException {
 		name.delete();
 		name.createNewFile();
@@ -63,6 +85,10 @@ public class FileName {
 		}
 	}
 	
+	/**
+	 * Metoda de verificare a existentei tag-ului
+	 * @param tagtba Tag-ul de verificat
+	 */
 	public boolean tagexist(String tagtba) throws IOException {
 		BufferedReader br_name = Files.newBufferedReader(path);
 		String line = null;

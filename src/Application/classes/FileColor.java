@@ -11,6 +11,9 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.Vector;
 
+/**
+ * Clasa pentru 
+ */
 public class FileColor {
 	
 	private Vector<Color> colors = new Vector<Color>();
@@ -28,14 +31,25 @@ public class FileColor {
 		br_color.close();
 	}
 	
+	/**
+	 * Getter pentru returnarea vectorului listei de culori
+	 * @return colors Vectorul culorilor
+	 */
 	public Vector<Color> getlistcolor(){
 		return colors;
 	}
 	
+	/**
+	 * Getter pentru returnarea path-ului catre 
+	 * @return path Path-ul ales
+	 */
 	public Path getPathc() {
 		return path;
 	}
 	
+	/**
+	 * 
+	 */
 	public void changelinecolor() throws IOException {
 		color.delete();
 		color.createNewFile();
