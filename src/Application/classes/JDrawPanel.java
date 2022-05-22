@@ -25,7 +25,7 @@ import javax.swing.event.MouseInputAdapter;
 import Application.interfaces.Obiect;
 
 /**
- * 
+ * Clasa pentru desenarea chenarului
  */
 public class JDrawPanel extends JPanel
 	{
@@ -92,7 +92,7 @@ public class JDrawPanel extends JPanel
 
 		@Override
 		/**
-		 * 
+		 * Metoda de desenare a chenarului
 		 */
 		protected void paintComponent(Graphics g)
 		{
@@ -150,6 +150,7 @@ public class JDrawPanel extends JPanel
 
 		/**
 		 * Metoda de stergere a dreptunghiurilor si redimensionarea imaginii la valorile presetate
+		 * @throws IOException Exceptie de input/output
 		 */
 		public void clear() throws IOException
 		{
@@ -165,6 +166,7 @@ public class JDrawPanel extends JPanel
 		 * @param targetWidth Valoarea latimii
 		 * @param targetHeight Valoarea lungimii
 		 * @return outputImage Imaginea finala
+		 * @throws IOException Exceptie de input/output
 		 */
 		public BufferedImage resizeImage(BufferedImage originalImage, int targetWidth, int targetHeight) throws IOException {
 		    Image resultingImage = originalImage.getScaledInstance(targetWidth, targetHeight, Image.SCALE_DEFAULT);

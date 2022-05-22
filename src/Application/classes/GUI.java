@@ -9,6 +9,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+/**
+ * Clasa pentru crearea interfata grafica
+ *
+ */
 public class GUI {
 	
 	private JFrame frame;
@@ -25,7 +29,7 @@ public class GUI {
 	
 	/**
 	 * Crearea aplicatiei
-	 * @throws IOException 
+	 * @throws IOException Exceptie de input/output
 	 */
 	public GUI() throws IOException {
 		initialize();
@@ -46,7 +50,7 @@ public class GUI {
 	 * Buton pentru exportarea imaginilor decupate,
 	 * Buton pentru schimbarea design-ului iconitelor de pe butoane,
 	 * Buton pentru informatii contribuitori
-	 * @throws IOException 
+	 * @throws IOException Exceptie de input/output
 	 */
 	private void initialize() throws IOException {
 

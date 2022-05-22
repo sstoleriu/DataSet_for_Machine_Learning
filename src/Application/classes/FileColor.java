@@ -12,7 +12,7 @@ import java.nio.file.StandardOpenOption;
 import java.util.Vector;
 
 /**
- * Clasa pentru 
+ * Clasa pentru gestionarea fisierului care contine culorile
  */
 public class FileColor {
 	
@@ -40,7 +40,7 @@ public class FileColor {
 	}
 	
 	/**
-	 * Getter pentru returnarea path-ului catre 
+	 * Getter pentru returnarea path-ului catre fisierul cu culori salvate sub forma de coduri
 	 * @return path Path-ul ales
 	 */
 	public Path getPathc() {
@@ -48,7 +48,8 @@ public class FileColor {
 	}
 	
 	/**
-	 * 
+	 * Metoda pentru schimbarea unei linii din fisierul cu codul culorilor la modificarea acesteia in program
+	 * @throws IOException Exceptie de input/output
 	 */
 	public void changelinecolor() throws IOException {
 		color.delete();
@@ -61,6 +62,11 @@ public class FileColor {
 		}
 	}
 	
+	/**
+	 * Metoda pentru stergerea unei linii din fisierul cu codul culorilor la stergerea acesteia in program
+	 * @param index_delete Indexul liniei din fisier care va fi stearsa
+	 * @throws IOException Exceptie de input/output
+	 */
 	public void deletelinecolor(int index_delete) throws IOException {
 		color.delete();
 		color.createNewFile();

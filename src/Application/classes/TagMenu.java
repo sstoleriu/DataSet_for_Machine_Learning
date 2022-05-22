@@ -57,11 +57,11 @@ public class TagMenu {
 	/**
 	 * Constructor de initializare cu parametri
 	 * @param TagMenu Butonul pentru meniul tag-urilor
-	 * @param combobox 
+	 * @param combobox Lista care contine vectorul names - numele obiectelor
 	 * @param frame Frame-ul setat
 	 * @param selectObjectVar Obiectul selectat din lista
-	 * @param X 
-	 * @param Y
+	 * @param X Coordonata X a frame-ului principal folosita pentru alinierea celorlalte frame-uri
+	 * @param Y Coordonata Y a frame-ului principal folosita pentru alinierea celorlalte frame-uri
 	 */
 	public TagMenu(JButton TagMenu, ComboBox combobox, JFrame frame,JComboBox<String> selectObjectVar, int X, int Y) {
 		this.TagMenu = TagMenu;
@@ -83,7 +83,7 @@ public class TagMenu {
 	 * Adaugare actiune la apasarea mouse-ului pentru butonul de editare culoare
 	 * Adaugare actiune la apasarea mouse-ului pentru butonul de editare nume
 	 * Adaugare actiune la apasarea mouse-ului pentru butonul de stergere tag
-	 * @throws IOException
+	 * @throws IOException Exceptie de input/output
 	 */
 	void initialize_tags() throws IOException{
 		frame.setResizable(false);	
@@ -292,6 +292,7 @@ public class TagMenu {
 	 * Adaugare actiune la apasarea mouse-ului pentru butonul Color
 	 * Adaugare actiune la apasarea mouse-ului pentru butonul Add 
 	 * Afisarea de mesaje pentru tag creat, nume tag deja utilizat, nume invalid
+	 * @throws IOException Exceptie de input/output
 	 */
 	void initialize_menubuttons() throws IOException {
 		JFrame newmenu = new JFrame();

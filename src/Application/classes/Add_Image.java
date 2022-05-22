@@ -51,7 +51,7 @@ public class Add_Image {
 	 * @param selectObject JComboBox pentru selectare optiune obiect
 	 * @param export Butonul de export
 	 * @param tagmenu Butonul pentru adaugarea/editarea/stergerea de taguri
-	 * @param combobox 
+	 * @param combobox Lista care contine vectorul names - numele obiectelor
 	 * @param refresh Butonul prntru reincarcarea programului
 	 * @param help Butonul pentru ajutor/informatii suplimentare
 	 * @param icons Butonul pentru schimbarea design-ului iconitelor de pe butoane,
@@ -78,6 +78,8 @@ public class Add_Image {
 	 * Adaugarea imaginii: alegerea dintr-un folder local si inserarea in aplicatie
 	 * Desenare chenar
 	 * Optiunea de exportare a imaginilor din chenare
+	 * @throws IOException Exceptie de input/output
+	 * 
 	 */
 	public void load() throws IOException {
 		add_imageTemp = this;
@@ -157,6 +159,7 @@ public class Add_Image {
 	
 	/**
 	 * Getter pentru preluarea imaginii adaugate de tip File 
+	 * @return file Fisierul cu imaginea adaugata
 	 */
 	public File getFileAdd_image(){
 		return this.file;
@@ -192,8 +195,8 @@ public class Add_Image {
 	}
 	
 	/**
-	 * Metoda 
-	 * @param ok
+	 * Metoda de mutare a imaginii de intampinare deasupra butonului Helper
+	 * @param ok Flag care indica daca mutarea va fi sau nu facuta
 	 */
 	public void moveDataSet(boolean ok) {
 		JLabel panel = new JLabel(new FileManager().getIcon("moveDataSet.png"));

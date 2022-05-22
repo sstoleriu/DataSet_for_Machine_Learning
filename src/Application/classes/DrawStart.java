@@ -76,6 +76,7 @@ public class DrawStart {
 	 * @param targetWidth Valoarea latimii
 	 * @param targetHeight Valoarea lungimii
 	 * @return outputImage Imaginea finala
+	 * @throws IOException Exceptie de input/output
 	 */
 	public static BufferedImage resizeImage(BufferedImage originalImage, int targetWidth, int targetHeight) throws IOException {
 	    Image resultingImage = originalImage.getScaledInstance(targetWidth, targetHeight, Image.SCALE_DEFAULT);
@@ -88,6 +89,7 @@ public class DrawStart {
 	 * Metoda pentru inceperea desenarii chenarelor
 	 * Initializeaza panoul in care se va desena
 	 * Reimprospateaza Panoul si lista de obiecte
+	 * @throws IOException Exceptie de input/output
 	 */
 	public void StartDrawing() throws IOException {
 		drawPanel =  new JDrawPanel(resizeImage(image, 800, 543), image);

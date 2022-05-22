@@ -6,8 +6,6 @@ import Application.classes.GUI;
 
 /**
  * Clasa principala (contine main - executia codului sursa)
-
-/**
  * @author     Stoleriu Stefan, Leonte Gabriel, Ignat Mihaela-Loredana, Brailescu Andrei 
  * @version     1.8.0_261-b12
  */

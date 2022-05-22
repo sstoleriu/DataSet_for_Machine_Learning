@@ -45,8 +45,8 @@ public class Helper {
 	 * Constructor de initializare cu parametri
 	 * @param help Buton pentru afisarea de informatii despre butoanele existente
 	 * @param credits Buton pentru afisarea de informatii despre contribuitori
-	 * @param X
-	 * @param Y
+	 * @param X Coordonata X a frame-ului principal folosita pentru alinierea celorlalte frame-uri
+	 * @param Y Coordonata Y a frame-ului principal folosita pentru alinierea celorlalte frame-uri
 	 */
 	Helper(JButton help, JButton credits, int X, int Y){
 		this.help = help;
@@ -63,6 +63,7 @@ public class Helper {
 	 * - contine informatii de utilizare pentru toate butoanele existene
 	 * Adaugarea de actiune la apasarea mouse-ului pentru butonul Credits
 	 *  - contine informatii despre contribuitori
+	 *  @throws IOException Exceptie de input/output
 	 */
 	public void load() throws IOException {
 

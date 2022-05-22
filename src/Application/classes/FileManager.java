@@ -9,19 +9,23 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 /**
- *
+ * Clasa pentru gestionarea fisierelor
  */
 public class FileManager {
 	
+	/**
+	 * Path-ul catre fisierul in care se afla imaginile/iconitele
+	 */
 	private String iconFirstPath = "src/Application/resources/images/";
 	private Icon icon;
 	
 	FileManager(){
 	}
+	
 	/**
-	 * Getter pentru preluarea path-ului iconitelor
-	 * @param iconSecondPath
-	 * @return
+	 * Getter pentru preluarea iconitelor din fisier
+	 * @param iconSecondPath Numele imaginii dorite
+	 * @return iconita corespunzatoare numelui 
 	 */
 	public Icon getIcon(String iconSecondPath) {
 		File iconFile = new File(iconFirstPath+iconSecondPath);
@@ -31,9 +35,9 @@ public class FileManager {
 	
 	/**
 	 * Getter pentru returnarea imaginii
-	 * @param iconSecondPath Path-ul imaginii
+	 * @param iconSecondPath Numele imaginii dorite
 	 * @return image Imaginea returnata
-	 * @throws IOException
+	 * @throws IOException Exceptie de input/output
 	 */
 	public Image getImage(String iconSecondPath) throws IOException {
 		File icon = new File(iconFirstPath+iconSecondPath);
@@ -44,6 +48,7 @@ public class FileManager {
 	/**
 	 * Metoda de verificare a existentei fisierului in path
 	 * @param path Path-ul ales
+	 * @return true/false
 	 */
 	public boolean FileExist(String path) {
 		File file = new File(path);
