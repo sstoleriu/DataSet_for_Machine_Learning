@@ -152,15 +152,22 @@ public class TagMenu {
 		colortag.setColumns(1);
 		
 		list.addMouseListener(new MouseAdapter() {
-			public void mousePressed(MouseEvent arg0) {
+			public void mouseClicked(MouseEvent arg0) {
 			int index = list.getSelectedIndex();
 			colortag.setOpaque(true);
 			colortag.setBackground(colors.get(index));
 			}
 			});	
+		list.addMouseListener(new MouseAdapter() {
+			public void mouseReleased(MouseEvent arg0) {
+				int index = list.getSelectedIndex();
+				colortag.setOpaque(true);
+				colortag.setBackground(colors.get(index));
+			}
+		});
 		
 		newtag.addMouseListener(new MouseAdapter() {
-			public void mousePressed(MouseEvent arg0) {
+			public void mouseClicked(MouseEvent arg0) {
 				if(OKaddt) {	
 					frame_addtag.setVisible(false);
 					OKaddt = false;
@@ -174,7 +181,7 @@ public class TagMenu {
 			});	
 		
 		editcolor.addMouseListener(new MouseAdapter() {
-			public void mousePressed(MouseEvent arg0) {
+			public void mouseClicked(MouseEvent arg0) {
 				try {
 					@SuppressWarnings("unused")
 					Color error = colors.get(list.getSelectedIndex());;
@@ -199,7 +206,7 @@ public class TagMenu {
 			});	
 		
 		editname.addMouseListener(new MouseAdapter() {
-			public void mousePressed(MouseEvent arg0) {
+			public void mouseClicked(MouseEvent arg0) {
 				try {
 					@SuppressWarnings("unused")
 					String error = names.get(list.getSelectedIndex());
@@ -230,7 +237,7 @@ public class TagMenu {
 			});
 		
 		deltag.addMouseListener(new MouseAdapter() {
-			public void mousePressed(MouseEvent arg0) {
+			public void mouseClicked(MouseEvent arg0) {
 				try {
 					@SuppressWarnings("unused")
 					String error = names.get(list.getSelectedIndex());
@@ -339,14 +346,14 @@ public class TagMenu {
 		newmenu.getContentPane().add(cchoose);
 		
 		cchoose.addMouseListener(new MouseAdapter() {
-			public void mousePressed(MouseEvent arg0) {
+			public void mouseClicked(MouseEvent arg0) {
 				Color colour=JColorChooser.showDialog(cchange,"Choose color", Color.white);
 				cchange.setBackground(colour);
 			}
-			});	
+			});
 		
 		Add.addMouseListener(new MouseAdapter() {
-			public void mousePressed(MouseEvent arg0) {
+			public void mouseClicked(MouseEvent arg0) {
 				String auxname = nchange.getText();
 				FileName fn = null;
 				try {

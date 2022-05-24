@@ -1,9 +1,9 @@
 
 
 Version:	3.14
-CmdLine:	D:\Eclipse\testWork\DataSet_for_Machine_Learning\DataSet.exe --l4j-debug
+CmdLine:	D:\Eclipse\Final\DataSet_for_Machine_Learning\DataSet.exe --l4j-debug
 WOW64:		yes
-Working dir:	D:\Eclipse\testWork\DataSet_for_Machine_Learning\.
+Working dir:	D:\Eclipse\Final\DataSet_for_Machine_Learning\.
 Java min ver:	1.008.000
 Java max ver:	
 64-bit search:	SOFTWARE\JavaSoft\Java Runtime Environment...
@@ -22,6 +22,6 @@ Ignore:		1.008.000_261
 64-bit search:	SOFTWARE\JavaSoft\JDK...
 Runtime used:	1.008.000_333 (64-bit)
 Launcher:	C:\Program Files\Java\jre1.8.0_333\bin\javaw.exe
-Launcher args:	-jar "D:\Eclipse\testWork\DataSet_for_Machine_Learning\DataSet.exe"
-Args length:	67/32768 chars
+Launcher args:	-jar "D:\Eclipse\Final\DataSet_for_Machine_Learning\DataSet.exe"
+Args length:	64/32768 chars
 Exit code:	0

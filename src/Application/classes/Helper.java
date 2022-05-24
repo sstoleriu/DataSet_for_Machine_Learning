@@ -100,9 +100,9 @@ public class Helper {
 		btnAddImage.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JFrame mesaj = new JFrame();
-				JOptionPane.showMessageDialog(mesaj,"Buhuhu, with this button you will\r\n"
+				JOptionPane.showMessageDialog(mesaj,"With this button you will\r\n"
 						+ "Insert an image in the program.\r\n"
-						+ "It will also enable the other functions\r\n","Info buhuhu!",JOptionPane.INFORMATION_MESSAGE,new FileManager().getIcon("DataHelp.png"));
+						+ "It will also enable the other functions\r\n","Info",JOptionPane.INFORMATION_MESSAGE,new FileManager().getIcon("DataHelp.png"));
 				mesaj.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			}
 		});
@@ -115,8 +115,8 @@ public class Helper {
 		btnTagMenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JFrame mesaj = new JFrame();
-				JOptionPane.showMessageDialog(mesaj,"Buhu, this button will open the tag menu\r\n"
-						+ "In this menu you can add/edit/delete tags\r\n","Info buhuhu!",JOptionPane.INFORMATION_MESSAGE, new FileManager().getIcon("DataHelp.png"));
+				JOptionPane.showMessageDialog(mesaj,"This button will open the tag menu\r\n"
+						+ "In this menu you can add/edit/delete tags\r\n","Info",JOptionPane.INFORMATION_MESSAGE, new FileManager().getIcon("DataHelp.png"));
 				mesaj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			}
 		});
@@ -129,8 +129,8 @@ public class Helper {
 		btnRefresh.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JFrame mesaj = new JFrame();
-				JOptionPane.showMessageDialog(mesaj,"Buhu, this button will clean the image\r\n"
-						+ "So that you can draw other rectangles","Info buhuhu!",JOptionPane.INFORMATION_MESSAGE, new FileManager().getIcon("DataHelp.png"));
+				JOptionPane.showMessageDialog(mesaj,"This button will clean the image\r\n"
+						+ "So that you can draw other rectangles","Info",JOptionPane.INFORMATION_MESSAGE, new FileManager().getIcon("DataHelp.png"));
 				mesaj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			}
 		});
@@ -145,8 +145,8 @@ public class Helper {
 				JFrame mesaj = new JFrame();
 				JOptionPane.showMessageDialog(mesaj,"With this button you will export\r\n"
 						+ "All drawn rectangles on the image\r\n"
-						+ "Simply choose a folder, buhuhu\r\n"
-						+ "And we will save them there","Info buhuhu!",JOptionPane.INFORMATION_MESSAGE, new FileManager().getIcon("DataHelp.png"));
+						+ "Simply choose a folder\r\n"
+						+ "And we will save them there","Info",JOptionPane.INFORMATION_MESSAGE, new FileManager().getIcon("DataHelp.png"));
 				mesaj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			}
 		});
@@ -168,8 +168,8 @@ public class Helper {
 			public void actionPerformed(ActionEvent e) {
 				JFrame mesaj = new JFrame();
 				JOptionPane.showMessageDialog(mesaj,"This button creates a new tag\r\n"
-						+ "Buhuhu, but keep this in mind\r\n"
-						+ "No null name nor an existing one\r\n","Info buhuhu!",JOptionPane.INFORMATION_MESSAGE, new FileManager().getIcon("DataHelp.png"));
+						+ "But keep this in mind\r\n"
+						+ "No null name nor an existing one\r\n","Info",JOptionPane.INFORMATION_MESSAGE, new FileManager().getIcon("DataHelp.png"));
 				mesaj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			}
 		});
@@ -182,8 +182,8 @@ public class Helper {
 		btnEditName.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JFrame mesaj = new JFrame();
-				JOptionPane.showMessageDialog(mesaj,"Buhuhu, with this button you change\r\n"
-						+ "The names of your existing tags","Info buhuhu!",JOptionPane.INFORMATION_MESSAGE, new FileManager().getIcon("DataHelp.png"));
+				JOptionPane.showMessageDialog(mesaj,"With this button you change\r\n"
+						+ "The names of your existing tags","Info",JOptionPane.INFORMATION_MESSAGE, new FileManager().getIcon("DataHelp.png"));
 				mesaj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			}
 		});
@@ -196,8 +196,8 @@ public class Helper {
 		btnEditColor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JFrame mesaj = new JFrame();
-				JOptionPane.showMessageDialog(mesaj,"Buhuhu, with this button you change\r\n"
-						+ "The colors of your existing tags","Info bufufu!",JOptionPane.INFORMATION_MESSAGE, new FileManager().getIcon("DataHelp.png"));
+				JOptionPane.showMessageDialog(mesaj,"With this button you change\r\n"
+						+ "The colors of your existing tags","Info",JOptionPane.INFORMATION_MESSAGE, new FileManager().getIcon("DataHelp.png"));
 				mesaj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			}
 		});
@@ -210,9 +210,8 @@ public class Helper {
 		btnDeleteTag.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JFrame mesaj = new JFrame();
-				JOptionPane.showMessageDialog(mesaj,"Buhu, unwanted tag in your list?\r\n"
-						+ "Fear not, my user! This button!\r\n"
-						+ "Will delete it for you, buhuhu!","Info buhuhu!",JOptionPane.INFORMATION_MESSAGE, new FileManager().getIcon("DataHelp.png"));
+				JOptionPane.showMessageDialog(mesaj,"Unwanted tag in your list?\r\n"
+						+ "This button will delete it","Info",JOptionPane.INFORMATION_MESSAGE, new FileManager().getIcon("DataHelp.png"));
 				mesaj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			}
 		});
@@ -233,9 +232,9 @@ public class Helper {
 		btnDrawing.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JFrame mesaj = new JFrame();
-				JOptionPane.showMessageDialog(mesaj,"Buhuhu, first you will need to add an image\r\n"
+				JOptionPane.showMessageDialog(mesaj,"First you will need to add an image\r\n"
 						+ "Then draw an rectangle with two clicks\r\n"
-						+ "Surround the wanted object with your rectangle","Info buhuhu!",JOptionPane.INFORMATION_MESSAGE, new FileManager().getIcon("DataHelp.png"));
+						+ "Surround the wanted object with your rectangle","Info",JOptionPane.INFORMATION_MESSAGE, new FileManager().getIcon("DataHelp.png"));
 				mesaj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			}
 		});
@@ -248,8 +247,8 @@ public class Helper {
 		btnDelTag.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JFrame mesaj = new JFrame();
-				JOptionPane.showMessageDialog(mesaj,"Buhu, this is a little info\r\n"
-						+ "You cannot delete your last tag","Info buhuhu!",JOptionPane.INFORMATION_MESSAGE, new FileManager().getIcon("DataHelp.png"));
+				JOptionPane.showMessageDialog(mesaj,"This is a little info\r\n"
+						+ "You cannot delete your last tag","Info",JOptionPane.INFORMATION_MESSAGE, new FileManager().getIcon("DataHelp.png"));
 				mesaj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			}
 		});
@@ -262,9 +261,9 @@ public class Helper {
 		btnExporting.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JFrame mesaj = new JFrame();
-				JOptionPane.showMessageDialog(mesaj,"Buhu, your wanted cropped images?\r\n"
+				JOptionPane.showMessageDialog(mesaj,"Your wanted cropped images?\r\n"
 						+ "Properly saved in your chosen folder\r\n"
-						+ "With correct names and numbers ","Info buhuhu!",JOptionPane.INFORMATION_MESSAGE, new FileManager().getIcon("DataHelp.png"));
+						+ "With correct names and numbers ","Info",JOptionPane.INFORMATION_MESSAGE, new FileManager().getIcon("DataHelp.png"));
 				mesaj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			}
 		});
@@ -277,8 +276,11 @@ public class Helper {
 		btnWarning.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JFrame mesaj = new JFrame();
-				JOptionPane.showMessageDialog(mesaj,"Please, do not attempt this\r\n"
-						+ "Trying to modify our files\r\n","Warning info buhu!",JOptionPane.INFORMATION_MESSAGE, new FileManager().getIcon("DataHelp.png"));
+				JOptionPane.showMessageDialog(mesaj,"Please, do not try to modify our files\r\n"
+						+ "Furthermore when adding a new tag\r\n"
+						+ "And trying to select it in the main menu\r\n"
+						+ "It will appear like the list is empty\r\n"
+						+ "Just click on it and it will repair itself","Warning info",JOptionPane.INFORMATION_MESSAGE, new FileManager().getIcon("DataHelp.png"));
 				mesaj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			}
 		});
