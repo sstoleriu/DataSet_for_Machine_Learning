@@ -1,11 +1,4 @@
 # DataSet_for_Machine_Learning
---Mai este nevoie de putin debug, 
---nu merge perfect mereu 
---e o exceptie pe care nu reusesc sa o rezolv ( la functia de desenare a dreptunghiului ) 
-
-<b> Debugging </b>
-<p> Is like being a </p>
-<p> Detective in a </p>
-<p> Crime movie </p>
-<p> Where you're also </p>
-<p> The murderer </p>
+<p>Aplicatie ce este destinata crearii unor seturi pentru Machine Learning </p>
+<p>Aplicatia poate insera taguri si poate decupa portiuni din poza, portiuni ce sunt selectate cu mouse-ul.</p>
+<p>In final portiunile pot fi exportate cu numele tagului ales</p>
